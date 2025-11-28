@@ -5,6 +5,10 @@ import jeeraImage from '../assets/Jeera.png';
 import papadKharImage from '../assets/Papad_Khar.png';
 import pinkSaltImage from '../assets/Himalayan_Pink_Salt.png';
 import greenChilliImage from '../assets/Green_Chilli.png';
+import readyToEatIcon from '../assets/Ready_to_eat_icon.png';
+import roastedIcon from '../assets/roasted_icon.png';
+import cleanLabelIcon from '../assets/simple_label_icon.png';
+import glutenFreeIcon from '../assets/gluten_free_icon.png';
 
 const Home = () => {
   return (
@@ -93,18 +97,33 @@ const Home = () => {
             {/* Product Details */}
             <div className="order-1 md:order-2 space-y-4 md:space-y-6">
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 border-l-4 md:border-l-8 border-marigold transform hover:translate-x-2 transition-transform duration-300">
-                <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">🎉 Ready to Eat</h4>
-                <p className="text-seal-brown text-sm md:text-base lg:text-lg">No cooking. No waiting. Just open the pack and crunch – anytime, anywhere.</p>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <img src={readyToEatIcon} alt="Ready to Eat" className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">Ready to Eat</h4>
+                    <p className="text-seal-brown text-sm md:text-base lg:text-lg">No cooking. No waiting. Just open the pack and crunch – anytime, anywhere.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 border-l-4 md:border-l-8 border-red-500 transform hover:translate-x-2 transition-transform duration-300">
-                <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">🔥 Roasted, Not Fried</h4>
-                <p className="text-seal-brown text-sm md:text-base lg:text-lg">Pure roasted. Zero oil. Not even air-fried. Just 0.3g fat per serve.</p>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <img src={roastedIcon} alt="Roasted, Not Fried" className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">Roasted, Not Fried</h4>
+                    <p className="text-seal-brown text-sm md:text-base lg:text-lg">Pure roasted. Zero oil. Not even air-fried. Just 0.3g fat per serve.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 border-l-4 md:border-l-8 border-green-500 transform hover:translate-x-2 transition-transform duration-300">
-                <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">✨ Clean Label</h4>
-                <p className="text-seal-brown text-sm md:text-base lg:text-lg">Just 5 traditional ingredients. No mixing. No maida. No udad.</p>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <img src={cleanLabelIcon} alt="Clean Label" className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">Clean Label</h4>
+                    <p className="text-seal-brown text-sm md:text-base lg:text-lg">Just 5 traditional ingredients. No mixing. No maida. No udad.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 border-l-4 md:border-l-8 border-amber-600 transform hover:translate-x-2 transition-transform duration-300">
