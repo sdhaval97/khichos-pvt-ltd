@@ -1,5 +1,10 @@
 import dadiImage from '../assets/Dadi Illustration 1.png';
 import productImage from '../assets/Product Image copy 3.png';
+import riceFlourImage from '../assets/Rice_flour.png';
+import jeeraImage from '../assets/Jeera.png';
+import papadKharImage from '../assets/Papad_Khar.png';
+import pinkSaltImage from '../assets/Himalayan_Pink_Salt.png';
+import greenChilliImage from '../assets/Green_Chilli.png';
 
 const Home = () => {
   return (
@@ -128,31 +133,41 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 mb-8 md:mb-12">
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4">🍚</div>
+              <div className="mb-2 md:mb-4 flex items-center justify-center">
+                <img src={riceFlourImage} alt="Rice Flour" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+              </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Rice Flour</h4>
               <p className="text-xs md:text-sm text-seal-brown">Pure & light</p>
             </div>
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4">🌿</div>
+              <div className="mb-2 md:mb-4 flex items-center justify-center">
+                <img src={jeeraImage} alt="Jeera" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+              </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Jeera</h4>
               <p className="text-xs md:text-sm text-seal-brown">Cumin goodness</p>
             </div>
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4">💎</div>
+              <div className="mb-2 md:mb-4 flex items-center justify-center">
+                <img src={papadKharImage} alt="Papad Khar" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+              </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Papad Khar</h4>
               <p className="text-xs md:text-sm text-seal-brown">Traditional magic</p>
             </div>
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4">🧂</div>
+              <div className="mb-2 md:mb-4 flex items-center justify-center">
+                <img src={pinkSaltImage} alt="Pink Salt" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+              </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Pink Salt</h4>
               <p className="text-xs md:text-sm text-seal-brown">Not regular salt</p>
             </div>
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300 col-span-2 md:col-span-1">
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4">🌶️</div>
+              <div className="mb-2 md:mb-4 flex items-center justify-center">
+                <img src={greenChilliImage} alt="Green Chillies" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+              </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Green Chillies</h4>
               <p className="text-xs md:text-sm text-seal-brown">Right kick</p>
             </div>
