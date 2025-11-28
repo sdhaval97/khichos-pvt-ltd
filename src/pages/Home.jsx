@@ -66,37 +66,37 @@ const Home = () => {
                   <span className="text-3xl md:text-4xl font-bold text-seal-brown">1</span>
                 </div>
                 <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
-                  <p className="text-seal-brown font-bold text-base md:text-lg">Papad = Always<br/>Part of Our Meals</p>
+                  <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-snug">Papads have been<br/>part of Indian meals<br/>forever</p>
                 </div>
               </div>
 
               {/* Step 2 */}
               <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                <div className="bg-seal-brown rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-marigold relative z-10">
+                <div className="bg-seal-brown rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-orange-400 relative z-10">
                   <span className="text-3xl md:text-4xl font-bold text-white">2</span>
                 </div>
                 <div className="bg-seal-brown rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
-                  <p className="text-white font-bold text-base md:text-lg">But Never<br/>This Easy</p>
+                  <p className="text-white font-bold text-sm md:text-base lg:text-lg leading-snug">Making them fresh<br/>took hours of work<br/>every time</p>
                 </div>
               </div>
 
               {/* Step 3 */}
               <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                <div className="bg-gradient-to-br from-marigold to-yellow-500 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
-                  <span className="text-3xl md:text-4xl font-bold text-seal-brown">3</span>
+                <div className="bg-orange-400 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-white">3</span>
                 </div>
-                <div className="bg-gradient-to-br from-marigold to-yellow-500 rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
-                  <p className="text-seal-brown font-bold text-base md:text-lg">We Did The<br/>Hard Work<br/>For You</p>
+                <div className="bg-orange-400 rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-white font-bold text-sm md:text-base lg:text-lg leading-snug">We did all the<br/>hard work and<br/>roasted them too</p>
                 </div>
               </div>
 
               {/* Step 4 */}
               <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                <div className="bg-white rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
-                  <span className="text-3xl md:text-4xl font-bold text-seal-brown">4</span>
+                <div className="bg-green-600 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-white relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-white">4</span>
                 </div>
-                <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
-                  <p className="text-seal-brown font-bold text-base md:text-lg">Ready When<br/>You Are.<br/>Always.</p>
+                <div className="bg-green-600 rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-white font-bold text-sm md:text-base lg:text-lg leading-snug">Now they're ready<br/>whenever you are.<br/>Just open & crunch</p>
                 </div>
               </div>
             </div>
