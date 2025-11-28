@@ -48,30 +48,57 @@ const Home = () => {
       {/* Story Section */}
       <section className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-seal-brown text-center mb-8 md:mb-12 font-bold">
-            The Story
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-christmas-sheep tracking-christmas text-seal-brown text-center mb-4">
+            How We Got Here
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-10 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-seal-brown text-base md:text-lg lg:text-xl leading-relaxed">
-                Papads have always been part of our Indian Meal Culture. Yet it never was this easy to have.
-              </p>
-            </div>
-            <div className="bg-seal-brown text-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-10 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-base md:text-lg lg:text-xl leading-relaxed">
-                From grinding, steaming, kneading, rolling to drying and cooking, miss a step and there is no papad for you.
-                For decades, that's just how it was – and it still is. <span className="font-bold text-marigold">We just did the hard work for you.</span>
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-marigold to-yellow-500 rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-10 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-seal-brown text-base md:text-lg lg:text-xl leading-relaxed font-bold">
-                KHiCHOS – papads that don't need waiting, cooking or anyone standing in the kitchen. They're ready when you are.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-10 transform hover:scale-105 transition-transform duration-300">
-              <p className="text-seal-brown text-lg md:text-xl lg:text-2xl leading-relaxed font-semibold">
-                From lunch plates to chai breaks to midnight binges, they just fit in—always.
-              </p>
+          <p className="text-center text-seal-brown text-lg md:text-xl mb-8 md:mb-12">
+            A papad revolution, 4 steps at a time
+          </p>
+
+          <div className="relative">
+            {/* Connecting Line */}
+            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-seal-brown opacity-20 transform -translate-y-1/2"></div>
+
+            <div className="grid md:grid-cols-4 gap-6 md:gap-4 relative">
+              {/* Step 1 */}
+              <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-seal-brown">1</span>
+                </div>
+                <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-seal-brown font-bold text-base md:text-lg">Papad = Always<br/>Part of Our Meals</p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-seal-brown rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-marigold relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-white">2</span>
+                </div>
+                <div className="bg-seal-brown rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-white font-bold text-base md:text-lg">But Never<br/>This Easy</p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-marigold to-yellow-500 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-seal-brown">3</span>
+                </div>
+                <div className="bg-gradient-to-br from-marigold to-yellow-500 rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-seal-brown font-bold text-base md:text-lg">We Did The<br/>Hard Work<br/>For You</p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto flex items-center justify-center mb-4 shadow-xl border-4 border-seal-brown relative z-10">
+                  <span className="text-3xl md:text-4xl font-bold text-seal-brown">4</span>
+                </div>
+                <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 h-32 md:h-40 flex items-center justify-center">
+                  <p className="text-seal-brown font-bold text-base md:text-lg">Ready When<br/>You Are.<br/>Always.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
