@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -22,20 +22,20 @@ const Footer = () => {
             <h3 className="font-christmas-sheep text-xl mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm hover:text-marigold transition-colors">
+                <a href="#" className="text-sm hover:text-marigold transition-colors">
                   Home
-                </Link>
+                </a>
               </li>
-              <li>
-                <Link to="/about" className="text-sm hover:text-marigold transition-colors">
+              {/* <li>
+                <a href="#" className="text-sm hover:text-marigold transition-colors">
                   Our Story
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="text-sm hover:text-marigold transition-colors">
+                <a href="#" className="text-sm hover:text-marigold transition-colors">
                   Contact Us
-                </Link>
-              </li>
+                </a>
+              </li> */}
             </ul>
           </div>
 
@@ -45,12 +45,12 @@ const Footer = () => {
             <p className="text-sm text-gray-300">
               Have questions? We'd love to hear from you.
             </p>
-            <Link
-              to="/contact"
+            {/* <a
+              href="#"
               className="inline-block mt-4 bg-marigold text-seal-brown px-6 py-2 rounded font-medium hover:bg-yellow-500 transition-colors"
             >
               Contact Us
-            </Link>
+            </a> */}
           </div>
         </div>
 
