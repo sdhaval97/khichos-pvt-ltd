@@ -150,7 +150,7 @@ const Home = () => {
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
               <div className="mb-2 md:mb-4 flex items-center justify-center">
-                <img src={papadKharImage} alt="Papad Khar" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+                <img src={papadKharImage} alt="Papad Khar" className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" />
               </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Papad Khar</h4>
               <p className="text-xs md:text-sm text-seal-brown">Traditional magic</p>
@@ -158,7 +158,7 @@ const Home = () => {
 
             <div className="bg-white p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl shadow-xl text-center transform hover:rotate-3 hover:scale-110 transition-all duration-300">
               <div className="mb-2 md:mb-4 flex items-center justify-center">
-                <img src={pinkSaltImage} alt="Pink Salt" className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain" />
+                <img src={pinkSaltImage} alt="Pink Salt" className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain" />
               </div>
               <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-base md:text-lg lg:text-xl mb-1 md:mb-2">Pink Salt</h4>
               <p className="text-xs md:text-sm text-seal-brown">Not regular salt</p>
