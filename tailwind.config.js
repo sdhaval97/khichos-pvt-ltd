@@ -14,6 +14,9 @@ export default {
         'made-tommy': ['"Made Tommy"', 'sans-serif'],
         'christmas-sheep': ['"Christmas Sheep"', 'cursive'],
       },
+      letterSpacing: {
+        'christmas': '0.1em',
+      },
     },
   },
   plugins: [],
