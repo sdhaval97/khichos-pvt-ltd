@@ -127,8 +127,13 @@ const Home = () => {
               </div>
 
               <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 border-l-4 md:border-l-8 border-amber-600 transform hover:translate-x-2 transition-transform duration-300">
-                <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">🌾 Gluten Free</h4>
-                <p className="text-seal-brown text-sm md:text-base lg:text-lg">Pure rice. Light on stomach. Heavy on nostalgia.</p>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <img src={glutenFreeIcon} alt="Gluten Free" className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-christmas-sheep tracking-christmas text-seal-brown text-lg md:text-xl lg:text-2xl mb-2">Gluten Free</h4>
+                    <p className="text-seal-brown text-sm md:text-base lg:text-lg">Pure rice. Light on stomach. Heavy on nostalgia.</p>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-6 md:mt-8 p-6 md:p-8 bg-gradient-to-r from-seal-brown to-amber-900 text-white rounded-2xl md:rounded-3xl text-center shadow-2xl transform hover:scale-105 transition-transform duration-300">
