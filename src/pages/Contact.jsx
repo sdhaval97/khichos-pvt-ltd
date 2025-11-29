@@ -26,52 +26,63 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-marigold min-h-screen py-16">
+    <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl text-seal-brown text-center mb-12">
-            Get in Touch
-          </h1>
+        <div className="max-w-5xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+              Let's Talk!
+            </h1>
+            <p className="text-2xl md:text-3xl text-seal-brown">
+              Questions? Ideas? Want to bring KHiCHOS to your region?
+            </p>
+          </div>
 
           {/* Form Type Toggle */}
-          <div className="flex justify-center gap-4 mb-8">
+          <div className="flex justify-center gap-4 mb-10">
             <button
               onClick={() => setFormType('customer')}
-              className={`px-8 py-3 rounded-lg font-medium transition-colors ${
+              className={`px-10 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 ${
                 formType === 'customer'
-                  ? 'bg-seal-brown text-white'
-                  : 'bg-white text-seal-brown hover:bg-gray-100'
+                  ? 'bg-gradient-to-r from-seal-brown to-amber-900 text-white shadow-2xl'
+                  : 'bg-white text-seal-brown hover:shadow-xl'
               }`}
             >
-              Customer Enquiry
+              <span className="text-2xl mr-2">💬</span> Customer Enquiry
             </button>
             <button
               onClick={() => setFormType('distributor')}
-              className={`px-8 py-3 rounded-lg font-medium transition-colors ${
+              className={`px-10 py-4 rounded-2xl font-bold text-lg transition-all transform hover:scale-105 ${
                 formType === 'distributor'
-                  ? 'bg-seal-brown text-white'
-                  : 'bg-white text-seal-brown hover:bg-gray-100'
+                  ? 'bg-gradient-to-r from-seal-brown to-amber-900 text-white shadow-2xl'
+                  : 'bg-white text-seal-brown hover:shadow-xl'
               }`}
             >
-              Distributor/Importer
+              <span className="text-2xl mr-2">🤝</span> Partner With Us
             </button>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <h2 className="text-3xl font-christmas-sheep text-seal-brown mb-6 text-center">
-              {formType === 'customer' ? 'Customer Enquiry' : 'Become a Distributor'}
-            </h2>
-            <p className="text-center text-seal-brown mb-8">
-              {formType === 'customer'
-                ? 'Have questions about our products? We\'d love to hear from you!'
-                : 'Interested in distributing KHiCHOS? Let\'s connect!'}
-            </p>
+          <div className="bg-white rounded-3xl shadow-2xl p-10 md:p-14 border-t-8 border-seal-brown">
+            <div className="text-center mb-8">
+              <div className="text-6xl mb-4">
+                {formType === 'customer' ? '📧' : '🚀'}
+              </div>
+              <h2 className="text-4xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
+                {formType === 'customer' ? 'We\'re All Ears' : 'Let\'s Grow Together'}
+              </h2>
+              <p className="text-lg text-seal-brown">
+                {formType === 'customer'
+                  ? 'Got questions about KHiCHOS? Drop us a message!'
+                  : 'Want to bring KHiCHOS to your market? We\'d love to partner!'}
+              </p>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block text-seal-brown font-medium mb-2">
+                <label htmlFor="name" className="block text-seal-brown font-bold text-lg mb-3">
                   Name *
                 </label>
                 <input
@@ -81,14 +92,14 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown"
+                  className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown transition-all text-lg"
                   placeholder="Your full name"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-seal-brown font-medium mb-2">
+                <label htmlFor="email" className="block text-seal-brown font-bold text-lg mb-3">
                   Email *
                 </label>
                 <input
@@ -98,14 +109,14 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown"
+                  className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown transition-all text-lg"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-seal-brown font-medium mb-2">
+                <label htmlFor="phone" className="block text-seal-brown font-bold text-lg mb-3">
                   Phone *
                 </label>
                 <input
@@ -115,7 +126,7 @@ const Contact = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown"
+                  className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown transition-all text-lg"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
@@ -124,7 +135,7 @@ const Contact = () => {
               {formType === 'distributor' && (
                 <>
                   <div>
-                    <label htmlFor="company" className="block text-seal-brown font-medium mb-2">
+                    <label htmlFor="company" className="block text-seal-brown font-bold text-lg mb-3">
                       Company Name *
                     </label>
                     <input
@@ -134,13 +145,13 @@ const Contact = () => {
                       required
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown transition-all text-lg"
                       placeholder="Your company name"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="location" className="block text-seal-brown font-medium mb-2">
+                    <label htmlFor="location" className="block text-seal-brown font-bold text-lg mb-3">
                       Location/Region *
                     </label>
                     <input
@@ -150,7 +161,7 @@ const Contact = () => {
                       required
                       value={formData.location}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown"
+                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown transition-all text-lg"
                       placeholder="City, State, Country"
                     />
                   </div>
@@ -159,7 +170,7 @@ const Contact = () => {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-seal-brown font-medium mb-2">
+                <label htmlFor="message" className="block text-seal-brown font-bold text-lg mb-3">
                   Message *
                 </label>
                 <textarea
@@ -168,8 +179,8 @@ const Contact = () => {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-seal-brown resize-none"
+                  rows="6"
+                  className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-marigold focus:border-seal-brown resize-none text-lg"
                   placeholder={
                     formType === 'customer'
                       ? 'How can we help you?'
@@ -181,9 +192,9 @@ const Contact = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-seal-brown text-white py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-colors"
+                className="w-full bg-gradient-to-r from-seal-brown to-amber-900 text-white py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition-all"
               >
-                Send Message
+                {formType === 'customer' ? '📤 Send Message' : '🚀 Let\'s Partner Up!'}
               </button>
             </form>
           </div>
