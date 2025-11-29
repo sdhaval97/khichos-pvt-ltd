@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -22,20 +22,20 @@ const Footer = () => {
             <h3 className="font-christmas-sheep tracking-christmas text-lg md:text-xl mb-3 md:mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-xs md:text-sm hover:text-marigold transition-colors">
+                <Link to="/" className="text-xs md:text-sm hover:text-marigold transition-colors">
                   Home
-                </a>
-              </li>
-              {/* <li>
-                <a href="#" className="text-xs md:text-sm hover:text-marigold transition-colors">
-                  Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-xs md:text-sm hover:text-marigold transition-colors">
+                <Link to="/story" className="text-xs md:text-sm hover:text-marigold transition-colors">
+                  Our Story
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-xs md:text-sm hover:text-marigold transition-colors">
                   Contact Us
-                </a>
-              </li> */}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -45,12 +45,12 @@ const Footer = () => {
             <p className="text-xs md:text-sm text-gray-300">
               Have questions? We'd love to hear from you.
             </p>
-            {/* <a
-              href="#"
+            <Link
+              to="/contact"
               className="inline-block mt-4 bg-marigold text-seal-brown px-6 py-2 rounded font-medium hover:bg-yellow-500 transition-colors text-sm"
             >
               Contact Us
-            </a> */}
+            </Link>
           </div>
         </div>
 
