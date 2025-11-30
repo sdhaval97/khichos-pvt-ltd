@@ -47,19 +47,21 @@ const Header = () => {
 
             {/* Dropdown Menu */}
             {isContactDropdownOpen && (
-              <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-xl overflow-hidden min-w-[180px] whitespace-nowrap">
-                <Link
-                  to="/contact?type=customer"
-                  className="block px-5 py-2.5 text-seal-brown hover:bg-marigold hover:text-white transition-colors font-made-tommy text-sm"
-                >
-                  Customer Enquiry
-                </Link>
-                <Link
-                  to="/contact?type=distributor"
-                  className="block px-5 py-2.5 text-seal-brown hover:bg-marigold hover:text-white transition-colors font-made-tommy text-sm border-t border-gray-200"
-                >
-                  Partner With Us
-                </Link>
+              <div className="absolute top-full right-0 pt-1">
+                <div className="bg-white rounded-lg shadow-xl overflow-hidden min-w-[180px] whitespace-nowrap">
+                  <Link
+                    to="/contact?type=customer"
+                    className="block px-5 py-2.5 text-seal-brown hover:bg-marigold hover:text-white transition-colors font-made-tommy text-sm"
+                  >
+                    Customer Enquiry
+                  </Link>
+                  <Link
+                    to="/contact?type=distributor"
+                    className="block px-5 py-2.5 text-seal-brown hover:bg-marigold hover:text-white transition-colors font-made-tommy text-sm border-t border-gray-200"
+                  >
+                    Partner With Us
+                  </Link>
+                </div>
               </div>
             )}
           </div>
