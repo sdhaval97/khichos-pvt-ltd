@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [formType, setFormType] = useState('customer'); // 'customer' or 'distributor'
   const [formData, setFormData] = useState({
     name: '',
@@ -11,6 +13,14 @@ const Contact = () => {
     company: '', // for distributor
     location: '', // for distributor
   });
+
+  // Set form type based on URL query parameter
+  useEffect(() => {
+    const type = searchParams.get('type');
+    if (type === 'customer' || type === 'distributor') {
+      setFormType(type);
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
