@@ -45,43 +45,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why KHiCHOS Section - Simplified */}
-      <section className="container mx-auto px-4 py-8 md:py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-christmas-sheep tracking-christmas text-seal-brown text-center mb-12">
-            Why KHiCHOS?
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
-            {/* Point 1 */}
-            <div className="text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="bg-gradient-to-br from-red-500 to-orange-500 rounded-3xl shadow-2xl p-8 h-full flex flex-col items-center justify-center">
-                <div className="text-7xl mb-4">⏱️</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Zero Prep Time</h3>
-                <p className="text-white text-lg">No cooking, no oil, no mess. Just open and enjoy.</p>
-              </div>
-            </div>
-
-            {/* Point 2 */}
-            <div className="text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl shadow-2xl p-8 h-full flex flex-col items-center justify-center">
-                <div className="text-7xl mb-4">🌱</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Actually Healthy</h3>
-                <p className="text-white text-lg">Roasted, not fried. 0.3g fat. Zero guilt.</p>
-              </div>
-            </div>
-
-            {/* Point 3 */}
-            <div className="text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="bg-gradient-to-br from-amber-500 to-yellow-500 rounded-3xl shadow-2xl p-8 h-full flex flex-col items-center justify-center">
-                <div className="text-7xl mb-4">🇮🇳</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Authentically Indian</h3>
-                <p className="text-white text-lg">5 traditional ingredients. Pure nostalgia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Product Section */}
       <section className="container mx-auto px-4 py-8 md:py-16">
@@ -214,49 +177,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Perfect For Section - New unique content */}
-      <section className="container mx-auto px-4 py-8 md:py-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-christmas-sheep tracking-christmas text-seal-brown text-center mb-12">
-            Perfect For Every Moment
-          </h2>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl shadow-xl p-8 text-center text-white transform hover:rotate-2 transition-all">
-              <div className="text-6xl mb-4">📺</div>
-              <h3 className="text-2xl font-bold mb-2">Netflix Nights</h3>
-              <p className="text-sm">Better than popcorn, we promise</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl shadow-xl p-8 text-center text-white transform hover:rotate-2 transition-all">
-              <div className="text-6xl mb-4">💼</div>
-              <h3 className="text-2xl font-bold mb-2">Office Snacking</h3>
-              <p className="text-sm">No mess, no crumbs, just crunch</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl shadow-xl p-8 text-center text-white transform hover:rotate-2 transition-all">
-              <div className="text-6xl mb-4">🍽️</div>
-              <h3 className="text-2xl font-bold mb-2">Meal Companion</h3>
-              <p className="text-sm">Dal-chawal feels incomplete without it</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-green-500 to-teal-500 rounded-3xl shadow-xl p-8 text-center text-white transform hover:rotate-2 transition-all">
-              <div className="text-6xl mb-4">🌙</div>
-              <h3 className="text-2xl font-bold mb-2">Midnight Cravings</h3>
-              <p className="text-sm">No cooking at 2 AM? We got you</p>
-            </div>
-          </div>
-
-          <div className="mt-12 bg-gradient-to-r from-seal-brown via-amber-900 to-seal-brown rounded-3xl shadow-2xl p-10 text-center text-white">
-            <p className="text-3xl md:text-4xl font-christmas-sheep tracking-christmas mb-4">
-              From lunch plates to chai breaks to midnight binges
-            </p>
-            <p className="text-xl md:text-2xl font-bold">
-              They just fit in. Always. ✨
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

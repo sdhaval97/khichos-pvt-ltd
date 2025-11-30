@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import dadiImage from '../assets/Dadi Illustration 1.png';
 
 const Contact = () => {
   const [formType, setFormType] = useState('customer'); // 'customer' or 'distributor'
@@ -26,7 +27,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16">
+    <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16 relative">
+      {/* Fixed Dadi Illustration */}
+      <img
+        src={dadiImage}
+        alt="Dadi"
+        className="fixed bottom-2 right-2 w-16 md:w-20 lg:w-24 z-50 pointer-events-none"
+      />
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Hero Section */}
