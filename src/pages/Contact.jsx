@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
 import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 
@@ -47,7 +46,7 @@ const Contact = () => {
         email: formData.email,
         phone: formData.phone,
         message: formData.message,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       };
 
       // Add distributor-specific fields if applicable
@@ -56,13 +55,17 @@ const Contact = () => {
         submitData.location = formData.location;
       }
 
-      // Submit to Google Sheets
-      await axios.post(sheetUrl, submitData, {
+      // Submit to Google Sheets using fetch with no-cors mode
+      await fetch(sheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify(submitData),
       });
 
+      // Note: With no-cors, we can't read the response, so we assume success
       setSubmitStatus('success');
 
       // Reset form
