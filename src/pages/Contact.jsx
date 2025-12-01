@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 
@@ -14,6 +15,8 @@ const Contact = () => {
     company: '', // for distributor
     location: '', // for distributor
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
 
   // Set form type based on URL query parameter
   useEffect(() => {
@@ -23,11 +26,66 @@ const Contact = () => {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic will be added later
-    console.log('Form submitted:', { formType, ...formData });
-    alert('Thank you for your message! We will get back to you soon.');
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Select the appropriate Google Sheets URL based on form type
+      const sheetUrl = formType === 'customer'
+        ? import.meta.env.VITE_GOOGLE_SHEETS_CUSTOMER_URL
+        : import.meta.env.VITE_GOOGLE_SHEETS_DISTRIBUTOR_URL;
+
+      if (!sheetUrl || sheetUrl.includes('YOUR_')) {
+        throw new Error('Google Sheets URL not configured. Please check your .env file.');
+      }
+
+      // Prepare form data
+      const submitData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+      };
+
+      // Add distributor-specific fields if applicable
+      if (formType === 'distributor') {
+        submitData.company = formData.company;
+        submitData.location = formData.location;
+      }
+
+      // Submit to Google Sheets
+      await axios.post(sheetUrl, submitData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      setSubmitStatus('success');
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        company: '',
+        location: '',
+      });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+
+      // Clear error message after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -105,6 +163,21 @@ const Contact = () => {
                   : 'Want to bring KHiCHOS to your market? We\'d love to partner!'}
               </p>
             </div>
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-100 border-2 border-green-500 text-green-800 px-6 py-4 rounded-2xl mb-6">
+                <p className="font-bold text-lg">✅ Success!</p>
+                <p>Thank you for your message! We&apos;ll get back to you soon.</p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-100 border-2 border-red-500 text-red-800 px-6 py-4 rounded-2xl mb-6">
+                <p className="font-bold text-lg">❌ Error</p>
+                <p>Something went wrong. Please try again or contact us directly.</p>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
@@ -219,9 +292,14 @@ const Contact = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-seal-brown to-amber-900 text-white py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition-all"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-seal-brown to-amber-900 text-white py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {formType === 'customer' ? '📤 Send Message' : '🚀 Let\'s Partner Up!'}
+                {isSubmitting ? (
+                  <span>⏳ Sending...</span>
+                ) : (
+                  <span>{formType === 'customer' ? '📤 Send Message' : '🚀 Let\'s Partner Up!'}</span>
+                )}
               </button>
             </form>
           </div>
