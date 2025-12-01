@@ -60,7 +60,9 @@ const Contact = () => {
               Let's Talk!
             </h1>
             <p className="text-2xl md:text-3xl text-seal-brown">
-              Questions? Ideas? Want to bring KHiCHOS to your region?
+              {formType === 'customer'
+                ? 'Questions? Ideas? We\'d love to hear from you!'
+                : 'Want to bring KHiCHOS to your region? Let\'s partner up!'}
             </p>
           </div>
 
