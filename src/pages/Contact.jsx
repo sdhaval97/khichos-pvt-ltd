@@ -243,6 +243,20 @@ const Contact = () => {
                   <p>Andheri (E), Mumbai,</p>
                   <p>Maharashtra - 400059</p>
                 </div>
+                <div className="pt-4 space-y-3 border-t-2 border-gray-200">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">📧</span>
+                    <a href="mailto:jay@khichos.com" className="text-lg hover:text-amber-900 transition-colors">
+                      jay@khichos.com
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">📞</span>
+                    <a href="tel:+919819714169" className="text-lg hover:text-amber-900 transition-colors">
+                      +91 98197 14169
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
