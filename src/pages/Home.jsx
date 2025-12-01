@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 import productImage from '../assets/Product Image copy 3.png';
 import riceFlourImage from '../assets/Rice_flour.png';
@@ -12,7 +13,14 @@ import glutenFreeIcon from '../assets/gluten_free_icon.png';
 
 const Home = () => {
   return (
-    <div className="bg-marigold min-h-screen relative">
+    <>
+      <SEO
+        title="KHiCHOS - India's First Ready-to-Eat Roasted Papad | Zero Oil, Just Crunch"
+        description="Discover KHiCHOS, India's first ready-to-eat roasted papad. No cooking, no frying, no waiting. Made with rice flour, naturally gluten-free, and just 5 clean ingredients. Only ₹20 for 25g pack."
+        keywords="ready to eat papad, roasted papad, khichos, gluten free papad, healthy papad, rice papad, no oil papad, indian snacks, ready to eat snacks, clean label snacks"
+        canonicalUrl="/"
+      />
+      <div className="bg-marigold min-h-screen relative">
       {/* Fixed Dadi Illustration */}
       <img
         src={dadiImage}
@@ -177,7 +185,8 @@ const Home = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

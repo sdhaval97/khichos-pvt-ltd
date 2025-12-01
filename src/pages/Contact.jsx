@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 
 const Contact = () => {
@@ -37,7 +38,14 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16 relative">
+    <>
+      <SEO
+        title="Contact Us - KHiCHOS | Customer Enquiry & Distribution Partnership"
+        description="Get in touch with KHiCHOS for customer enquiries or distribution partnership opportunities. Bring India's first ready-to-eat roasted papad to your region."
+        keywords="contact khichos, khichos distributor, khichos partnership, buy khichos, khichos customer service, papad distributor india"
+        canonicalUrl="/contact"
+      />
+      <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16 relative">
       {/* Fixed Dadi Illustration */}
       <img
         src={dadiImage}
@@ -217,7 +225,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

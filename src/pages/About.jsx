@@ -1,8 +1,16 @@
+import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 
 const About = () => {
   return (
-    <div className="bg-gradient-to-br from-marigold via-yellow-300 to-orange-200 min-h-screen py-8 md:py-16 relative">
+    <>
+      <SEO
+        title="Our Story - KHiCHOS | From Dadi's Kitchen to Your Snack Drawer"
+        description="Learn how KHiCHOS transformed the traditional 4-hour papad-making process into India's first ready-to-eat roasted papad. Rice-based, zero oil, and ready in 0 seconds."
+        keywords="khichos story, papad history, indian snack innovation, roasted papad, rice papad, traditional indian food, healthy snacks india"
+        canonicalUrl="/story"
+      />
+      <div className="bg-gradient-to-br from-marigold via-yellow-300 to-orange-200 min-h-screen py-8 md:py-16 relative">
       {/* Fixed Dadi Illustration */}
       <img
         src={dadiImage}
@@ -148,7 +156,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
