@@ -223,6 +223,43 @@ const Contact = () => {
               </button>
             </form>
           </div>
+
+          {/* Contact Details and Map Section */}
+          <div className="mt-12 grid md:grid-cols-2 gap-8">
+            {/* Contact Details */}
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border-t-8 border-seal-brown">
+              <h3 className="text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+                📍 Visit Us
+              </h3>
+              <div className="space-y-4 text-seal-brown">
+                <div>
+                  <p className="font-bold text-xl mb-2">Mr. Jay Ganatra</p>
+                  <p className="text-lg">Khichos Foods (OPC) Private Limited</p>
+                </div>
+                <div className="text-lg leading-relaxed">
+                  <p>114, 1st Floor,</p>
+                  <p>Alpine Industrial Estate,</p>
+                  <p>Military Road, Marol,</p>
+                  <p>Andheri (E), Mumbai,</p>
+                  <p>Maharashtra - 400059</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-t-8 border-seal-brown">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0666666666665!2d72.8697!3d19.1176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8331f0c579f%3A0x5f3e3e3e3e3e3e3e!2sAlpine%20Industrial%20Estate%2C%20Military%20Road%2C%20Marol%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400059!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '350px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Khichos Foods Location"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
       </div>
