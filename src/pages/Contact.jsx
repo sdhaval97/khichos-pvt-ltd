@@ -249,15 +249,25 @@ const Contact = () => {
             {/* Google Maps Embed */}
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-t-8 border-seal-brown">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0666666666665!2d72.8697!3d19.1176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8331f0c579f%3A0x5f3e3e3e3e3e3e3e!2sAlpine%20Industrial%20Estate%2C%20Military%20Road%2C%20Marol%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400059!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.743022637546!2d72.88393113169653!3d19.118926259244667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c81069819ce3%3A0xa2d5eb01f9601abf!2sAlpine%20Industrial%20Estate!5e0!3m2!1sen!2sin!4v1764596486172!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
-                style={{ border: 0, minHeight: '350px' }}
+                style={{ border: 0, minHeight: '300px' }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Khichos Foods Location"
               ></iframe>
+              <div className="p-4">
+                <a
+                  href="https://maps.app.goo.gl/your-location-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-gradient-to-r from-seal-brown to-amber-900 text-white py-3 rounded-xl font-bold text-center hover:shadow-xl transform hover:scale-105 transition-all"
+                >
+                  🗺️ Open in Google Maps
+                </a>
+              </div>
             </div>
           </div>
         </div>
