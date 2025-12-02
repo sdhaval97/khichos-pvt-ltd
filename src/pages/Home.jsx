@@ -1,6 +1,7 @@
 import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 import productImage from '../assets/Product Image copy 3.png';
+import mockupImage from '../assets/Khichos Packaging Mock up 01.png';
 import riceFlourImage from '../assets/Rice_flour.png';
 import jeeraImage from '../assets/Jeera.png';
 import papadKharImage from '../assets/Papad_Khar.png';
@@ -44,11 +45,13 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Product Mockup Placeholder */}
+          {/* Product Mockup */}
           <div className="flex items-center justify-center">
-            <div className="bg-white bg-opacity-30 rounded-3xl border-4 border-dashed border-seal-brown p-8 md:p-12 w-full max-w-md h-64 md:h-96 flex items-center justify-center">
-              <p className="text-seal-brown text-lg md:text-xl font-bold text-center">Product Packet Mockup</p>
-            </div>
+            <img
+              src={mockupImage}
+              alt="KHiCHOS Packaging Mockup"
+              className="w-full max-w-md h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       </section>
