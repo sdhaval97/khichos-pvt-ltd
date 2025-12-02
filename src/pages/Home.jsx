@@ -127,7 +127,7 @@ const Home = () => {
       </section>
 
       {/* Ingredients Section */}
-      <section className="container mx-auto px-4 py-8 md:py-16 bg-gradient-to-b from-marigold to-yellow-400">
+      <section className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-seal-brown text-center mb-3 md:mb-4 font-bold">
             What Goes Into Every Crunch
