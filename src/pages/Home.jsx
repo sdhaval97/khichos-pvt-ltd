@@ -30,7 +30,7 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-8 md:py-16">
+      <section className="container mx-auto px-4 py-4 md:py-8">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
           {/* Hero Text */}
           <div className="text-center md:text-left">
@@ -46,11 +46,12 @@ const Home = () => {
           </div>
 
           {/* Product Mockup */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center overflow-hidden">
             <img
               src={mockupImage}
               alt="KHiCHOS Packaging Mockup"
-              className="w-full max-w-md h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              className="w-full max-w-md h-auto object-cover drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              style={{ objectPosition: '50% 5%' }}
             />
           </div>
         </div>
