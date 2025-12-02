@@ -1,7 +1,7 @@
 import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
 import productImage from '../assets/Product Image copy 3.png';
-import mockupImage from '../assets/Khichos Packaging Mock up 01.png';
+import mockupImage from '../assets/Khichos Packaging Mock up 01 - edited.png';
 import riceFlourImage from '../assets/Rice_flour.png';
 import jeeraImage from '../assets/Jeera.png';
 import papadKharImage from '../assets/Papad_Khar.png';
