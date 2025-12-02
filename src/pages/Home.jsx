@@ -30,7 +30,7 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-4 md:py-8">
+      <section className="container mx-auto px-4 pt-2 pb-4 md:pt-4 md:pb-8">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
           {/* Hero Text */}
           <div className="text-center md:text-left">
