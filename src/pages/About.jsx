@@ -55,17 +55,28 @@ const About = () => {
           <div className="mb-16 md:mb-24 relative" style={{ zIndex: 10 }}>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div className="lg:ml-8">
-                <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
-                    We Traded Legacy for Convenience.
-                  </h2>
-                  <div className="space-y-4 md:space-y-6">
-                    <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
-                      Slowly, we gave in. The "easy, greasy" fried snacks took over. Aloo and Maida crept into our diets because they were convenient. Our legacy got lost in the noise of "instant" everything.
-                    </p>
-                    <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
-                      We realized that while popcorn moved from the cooker to the microwave to the ready-to-eat bag, the papad was left behind in the kitchen. It was time for an evolution.
-                    </p>
+                <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 relative overflow-hidden">
+                  {/* Papad in Pot - Mobile only, bottom right corner */}
+                  <div className="lg:hidden absolute right-2 bottom-2 opacity-20">
+                    <img
+                      src={papadInPotImage}
+                      alt="Papad in Pot"
+                      className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
+                    />
+                  </div>
+
+                  <div className="relative z-10">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+                      We Traded Legacy for Convenience.
+                    </h2>
+                    <div className="space-y-4 md:space-y-6">
+                      <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
+                        Slowly, we gave in. The "easy, greasy" fried snacks took over. Aloo and Maida crept into our diets because they were convenient. Our legacy got lost in the noise of "instant" everything.
+                      </p>
+                      <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
+                        We realized that while popcorn moved from the cooker to the microwave to the ready-to-eat bag, the papad was left behind in the kitchen. It was time for an evolution.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
