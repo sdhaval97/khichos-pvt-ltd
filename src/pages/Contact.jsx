@@ -106,7 +106,7 @@ const Contact = () => {
         keywords="contact khichos, khichos distributor, khichos partnership, buy khichos, khichos customer service, papad distributor india"
         canonicalUrl="/contact"
       />
-      <div className="bg-gradient-to-br from-marigold via-orange-200 to-yellow-300 min-h-screen py-16 relative">
+      <div className="bg-marigold min-h-screen py-16 relative">
       {/* Fixed Dadi Illustration */}
       <img
         src={dadiImage}

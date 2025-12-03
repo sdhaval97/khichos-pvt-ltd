@@ -21,7 +21,7 @@ const Home = () => {
         keywords="ready to eat papad, roasted papad, khichos, gluten free papad, healthy papad, rice papad, no oil papad, indian snacks, ready to eat snacks, clean label snacks"
         canonicalUrl="/"
       />
-      <div className="bg-gradient-to-br from-marigold via-yellow-300 to-orange-200 min-h-screen relative">
+      <div className="bg-marigold min-h-screen relative">
       {/* Fixed Dadi Illustration */}
       <img
         src={dadiImage}
