@@ -131,20 +131,20 @@ const Home = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-              <div className="text-5xl md:text-6xl lg:text-7xl mb-4">💧</div>
-              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">0 Oil</h3>
+              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-seal-brown mb-4">0</div>
+              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">Oil</h3>
               <p className="text-seal-brown text-sm md:text-base">Completely oil-free. Just pure roasted goodness.</p>
             </div>
 
             <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-              <div className="text-5xl md:text-6xl lg:text-7xl mb-4">❤️</div>
-              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">0 Cholesterol</h3>
+              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-seal-brown mb-4">0</div>
+              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">Cholesterol</h3>
               <p className="text-seal-brown text-sm md:text-base">Heart-friendly. Guilt-free snacking.</p>
             </div>
 
             <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-8 text-center transform hover:-translate-y-2 transition-all duration-300">
-              <div className="text-5xl md:text-6xl lg:text-7xl mb-4">⚖️</div>
-              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">0.3g Fat</h3>
+              <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-seal-brown mb-4">0.3g</div>
+              <h3 className="text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-2">Fat</h3>
               <p className="text-seal-brown text-sm md:text-base">Light on fat. Heavy on taste.</p>
             </div>
           </div>
