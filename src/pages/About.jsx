@@ -61,7 +61,7 @@ const About = () => {
                     <img
                       src={papadInPotImage}
                       alt="Papad in Pot"
-                      className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
+                      className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain"
                     />
                   </div>
 
