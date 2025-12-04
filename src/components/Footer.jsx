@@ -55,8 +55,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-6 md:mt-8 pt-4 md:pt-6 text-center text-xs md:text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} KHiCHOS. All rights reserved.</p>
+        <div className="border-t border-gray-700 mt-6 md:mt-8 pt-4 md:pt-6 text-center">
+          <p className="text-xs md:text-sm text-gray-400 mb-3 md:mb-4 max-w-4xl mx-auto">
+            <strong>Disclaimer:</strong> All content on this website — including product descriptions, nutritional claims, health benefits, and usage recommendations — is provided for informational purposes only and should not be considered as professional advice. We do not provide medical, nutritional, or legal guidance. Please consult appropriate professionals before making decisions based on information found here.
+          </p>
+          <p className="text-xs md:text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} KHiCHOS. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
