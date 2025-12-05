@@ -1,6 +1,25 @@
-import { Link } from 'react-router-dom';
-
 const Footer = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 120; // Increased offset to account for sticky header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="bg-seal-brown text-white py-6 md:py-8">
       <div className="container mx-auto px-4">
@@ -22,19 +41,24 @@ const Footer = () => {
             <h3 className="font-christmas-sheep tracking-christmas text-lg md:text-xl mb-3 md:mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-xs md:text-sm hover:text-marigold transition-colors">
+                <button onClick={scrollToTop} className="text-xs md:text-sm hover:text-marigold transition-colors">
                   Home
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/story" className="text-xs md:text-sm hover:text-marigold transition-colors">
-                  Our Story
-                </Link>
+                <button onClick={() => scrollToSection('about')} className="text-xs md:text-sm hover:text-marigold transition-colors">
+                  About
+                </button>
               </li>
               <li>
-                <Link to="/contact" className="text-xs md:text-sm hover:text-marigold transition-colors">
+                <button onClick={() => scrollToSection('story')} className="text-xs md:text-sm hover:text-marigold transition-colors">
+                  Story
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('contact')} className="text-xs md:text-sm hover:text-marigold transition-colors">
                   Contact Us
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -45,12 +69,12 @@ const Footer = () => {
             <p className="text-xs md:text-sm text-gray-300">
               Have questions? We'd love to hear from you.
             </p>
-            <Link
-              to="/contact"
+            <button
+              onClick={() => scrollToSection('contact')}
               className="inline-block mt-4 bg-marigold text-seal-brown px-6 py-2 rounded font-medium hover:bg-yellow-500 transition-colors text-sm"
             >
               Contact Us
-            </Link>
+            </button>
           </div>
         </div>
 
