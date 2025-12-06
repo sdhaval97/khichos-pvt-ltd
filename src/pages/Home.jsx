@@ -5,6 +5,10 @@ import mockupImage from '../assets/Khichos Packaging Mock up 01 - edited.png';
 import papadBowlImage from '../assets/papad-bowl.png';
 import papadStackImage from '../assets/papad-stack.png';
 import papadInPotImage from '../assets/papad-in-pot.png';
+import papadPiece1 from '../assets/images/papad-piece-1-removebg-preview.png';
+import papadPiece2 from '../assets/images/papad-piece-2-removebg-preview.png';
+import customerSupportImage from '../assets/customer_support.png';
+import partnerWithUsImage from '../assets/partner_with_us.png';
 
 const Home = () => {
   const [showDadi, setShowDadi] = useState(false);
@@ -41,8 +45,16 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-2 pb-4 md:pt-4 md:pb-8">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
+      <section className="container mx-auto px-4 pt-2 pb-4 md:pt-4 md:pb-8 relative overflow-hidden">
+        {/* Papad piece peeking from right side */}
+        <img
+          src={papadPiece1}
+          alt=""
+          className="absolute top-8 -right-16 md:-right-20 lg:-right-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
+          style={{ transform: 'rotate(15deg)' }}
+        />
+
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto relative z-10">
           {/* Hero Text */}
           <div className="text-center md:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-seal-brown mb-4 md:mb-6 font-bold leading-tight tracking-wide">
@@ -69,7 +81,15 @@ const Home = () => {
       </section>
 
       {/* About Section - Quick Product Overview */}
-      <section id="about" className="py-16 md:py-24 bg-marigold relative">
+      <section id="about" className="py-16 md:py-24 bg-marigold relative overflow-hidden">
+        {/* Papad piece peeking from left side */}
+        <img
+          src={papadPiece2}
+          alt=""
+          className="absolute top-8 -left-16 md:-left-20 lg:-left-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
+          style={{ transform: 'rotate(-15deg)' }}
+        />
+
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-christmas-sheep tracking-christmas text-seal-brown mb-8">
@@ -158,7 +178,7 @@ const Home = () => {
             <div className="mb-16 md:mb-24 relative" style={{ zIndex: 10 }}>
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="lg:ml-8">
-                  <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 relative overflow-hidden">
                     {/* Papad in Pot - Mobile only, bottom right corner */}
                     <div className="lg:hidden absolute right-2 bottom-2 opacity-20">
                       <img
@@ -169,14 +189,14 @@ const Home = () => {
                     </div>
 
                     <div className="relative z-10">
-                      <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+                      <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-white mb-6">
                         We Traded Legacy for Convenience.
                       </h3>
                       <div className="space-y-4 md:space-y-6">
-                        <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
+                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
                           Slowly, we gave in. The "easy, greasy" fried snacks took over. Aloo and Maida crept into our diets because they were convenient. Our legacy got lost in the noise of "instant" everything.
                         </p>
-                        <p className="text-base md:text-lg lg:text-xl text-seal-brown leading-relaxed">
+                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
                           We realized that while popcorn moved from the cooker to the microwave to the ready-to-eat bag, the papad was left behind in the kitchen. It was time for an evolution.
                         </p>
                       </div>
@@ -210,27 +230,17 @@ const Home = () => {
                 </div>
 
                 <div className="lg:mr-8">
-                  <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 relative overflow-hidden">
-                    <div className="absolute right-4 bottom-4 md:right-8 md:bottom-8 opacity-20 md:opacity-30">
-                      <img
-                        src={dadiImage}
-                        alt="Dadi Illustration"
-                        className="w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 object-contain"
-                      />
-                    </div>
-
-                    <div className="relative z-10">
-                      <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-white mb-6">
-                        For the Hustlers, The Nurturers, and Everyone In Between.
-                      </h3>
-                      <div className="space-y-4 md:space-y-6">
-                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                          Khichos brings it all back. No cooking. No waiting. Just open the pack and crunch.
-                        </p>
-                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                          We kept the ingredients rooted in tradition—Rice, Jeera, and Pink Salt—but modernized the format for your fast-paced life. It's the easy, clean crunch you actually deserve.
-                        </p>
-                      </div>
+                  <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-white mb-6">
+                      For the Hustlers, The Nurturers, and Everyone In Between.
+                    </h3>
+                    <div className="space-y-4 md:space-y-6">
+                      <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
+                        Khichos brings it all back. No cooking. No waiting. Just open the pack and crunch.
+                      </p>
+                      <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
+                        We kept the ingredients rooted in tradition—Rice, Jeera, and Pink Salt—but modernized the format for your fast-paced life. It's the easy, clean crunch you actually deserve.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -239,8 +249,8 @@ const Home = () => {
 
             {/* Closing Quote - CENTER */}
             <div className="text-center max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
-              <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-christmas-sheep tracking-christmas text-seal-brown leading-tight">
+              <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-christmas-sheep tracking-christmas text-white leading-tight">
                   "Light on Fat. Heavy on Nostalgia."
                 </p>
               </div>
@@ -298,9 +308,9 @@ const Home = () => {
                 {/* Right: Image */}
                 <div className="flex items-center justify-center">
                   <img
-                    src={papadBowlImage}
+                    src={customerSupportImage}
                     alt="Customer Support"
-                    className="w-full max-w-md h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                    className="w-full max-w-lg h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
@@ -346,9 +356,9 @@ const Home = () => {
                 {/* Right: Image */}
                 <div className="flex items-center justify-center">
                   <img
-                    src={papadStackImage}
+                    src={partnerWithUsImage}
                     alt="Business Partnership"
-                    className="w-full max-w-md h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                    className="w-full max-w-lg h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
