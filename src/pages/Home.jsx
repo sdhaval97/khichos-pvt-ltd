@@ -387,7 +387,7 @@ const Home = () => {
                       Mumbai - 400059, Maharashtra, India.
                     </p>
                     <a
-                      href="https://maps.app.goo.gl/ZkJzNWJdZtv7vXZq7"
+                      href="https://www.google.com/maps/place/Alpine+Industrial+Estate/@19.118926,72.8839311,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c81069819ce3:0xa2d5eb01f9601abf!8m2!3d19.118926!4d72.886506!16s%2Fg%2F11cm44g88f"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-6 bg-seal-brown text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"

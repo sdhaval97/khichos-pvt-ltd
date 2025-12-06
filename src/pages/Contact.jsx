@@ -357,7 +357,7 @@ const Contact = () => {
               ></iframe>
               <div className="p-4">
                 <a
-                  href="https://maps.app.goo.gl/your-location-link"
+                  href="https://www.google.com/maps/place/Alpine+Industrial+Estate/@19.118926,72.8839311,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c81069819ce3:0xa2d5eb01f9601abf!8m2!3d19.118926!4d72.886506!16s%2Fg%2F11cm44g88f"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-gradient-to-r from-seal-brown to-amber-900 text-white py-3 rounded-xl font-bold text-center hover:shadow-xl transform hover:scale-105 transition-all"
