@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const Header = () => {
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -39,8 +40,19 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Navigation - Centered */}
-          <nav className="flex gap-6 sm:gap-8 md:gap-12 absolute left-1/2 -translate-x-1/2">
+          {/* Hamburger Menu Button - Mobile Only */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex flex-col gap-1.5 z-50"
+            aria-label="Toggle menu"
+          >
+            <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          </button>
+
+          {/* Navigation - Desktop Centered */}
+          <nav className="hidden md:flex gap-6 md:gap-12 absolute left-1/2 -translate-x-1/2">
             <button
               onClick={scrollToTop}
               className="font-made-tommy font-medium hover:text-marigold transition-colors text-sm sm:text-base"
@@ -107,6 +119,67 @@ const Header = () => {
               Disclaimer
             </button>
           </nav>
+
+          {/* Mobile Menu - Slides from top */}
+          <div className={`md:hidden fixed top-0 right-0 w-full bg-seal-brown transform transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+            <nav className="flex flex-col pt-20 pb-8 px-8 space-y-4">
+              <button
+                onClick={() => { scrollToTop(); setIsMobileMenuOpen(false); }}
+                className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 border-b border-gray-700"
+              >
+                Home
+              </button>
+              <button
+                onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }}
+                className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 border-b border-gray-700"
+              >
+                About
+              </button>
+              <button
+                onClick={() => { scrollToSection('story'); setIsMobileMenuOpen(false); }}
+                className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 border-b border-gray-700"
+              >
+                Story
+              </button>
+
+              {/* Contact Section with Sub-items */}
+              <div className="border-b border-gray-700">
+                <button
+                  onClick={() => { scrollToSection('contact-customer'); setIsMobileMenuOpen(false); }}
+                  className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 w-full"
+                >
+                  Contact
+                </button>
+                <div className="pl-4 pb-3 space-y-2">
+                  <button
+                    onClick={() => { scrollToSection('contact-customer'); setIsMobileMenuOpen(false); }}
+                    className="block text-sm text-gray-300 hover:text-marigold transition-colors py-2"
+                  >
+                    Customer Support
+                  </button>
+                  <button
+                    onClick={() => { scrollToSection('contact-business'); setIsMobileMenuOpen(false); }}
+                    className="block text-sm text-gray-300 hover:text-marigold transition-colors py-2"
+                  >
+                    Business
+                  </button>
+                  <button
+                    onClick={() => { scrollToSection('contact-location'); setIsMobileMenuOpen(false); }}
+                    className="block text-sm text-gray-300 hover:text-marigold transition-colors py-2"
+                  >
+                    Location
+                  </button>
+                </div>
+              </div>
+
+              <button
+                onClick={() => { scrollToSection('disclaimer'); setIsMobileMenuOpen(false); }}
+                className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 border-b border-gray-700"
+              >
+                Disclaimer
+              </button>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
