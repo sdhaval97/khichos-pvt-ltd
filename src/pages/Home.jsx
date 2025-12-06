@@ -288,7 +288,7 @@ const Home = () => {
                     <p className="text-xl text-seal-brown font-medium mb-6">
                       Feel free to reach out to us at below co-ordinates:
                     </p>
-                    <div className="space-y-4">
+                    <div className="space-y-4 max-w-sm">
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
                         <span className="text-3xl">📞</span>
                         <a href="tel:18008900370" className="text-xl hover:text-marigold transition-colors">
@@ -297,7 +297,7 @@ const Home = () => {
                       </div>
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
                         <span className="text-3xl">📧</span>
-                        <a href="mailto:customercare@khichos.com" className="text-xl hover:text-marigold transition-colors">
+                        <a href="mailto:customercare@khichos.com" className="text-base md:text-xl hover:text-marigold transition-colors">
                           customercare@khichos.com
                         </a>
                       </div>
@@ -336,7 +336,7 @@ const Home = () => {
                     <p className="text-lg text-seal-brown mb-6">
                       You may reach out directly to our Founder and MD at below co-ordinates:
                     </p>
-                    <div className="space-y-4">
+                    <div className="space-y-4 max-w-sm">
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
                         <span className="text-3xl">📞</span>
                         <a href="tel:9004514169" className="text-xl hover:text-marigold transition-colors">
