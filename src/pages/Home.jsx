@@ -46,11 +46,11 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-2 pb-4 md:pt-4 md:pb-8 relative overflow-hidden">
-        {/* Papad piece peeking from right side */}
+        {/* Papad piece peeking from right side - Desktop only */}
         <img
           src={papadPiece1}
           alt=""
-          className="absolute top-8 -right-16 md:-right-20 lg:-right-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
+          className="hidden md:block absolute top-8 -right-16 md:-right-20 lg:-right-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
           style={{ transform: 'rotate(15deg)' }}
         />
 
@@ -82,11 +82,11 @@ const Home = () => {
 
       {/* About Section - Quick Product Overview */}
       <section id="about" className="py-16 md:py-24 bg-marigold relative overflow-hidden">
-        {/* Papad piece peeking from left side */}
+        {/* Papad piece peeking from left side - Desktop only */}
         <img
           src={papadPiece2}
           alt=""
-          className="absolute top-8 -left-16 md:-left-20 lg:-left-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
+          className="hidden md:block absolute top-8 -left-16 md:-left-20 lg:-left-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
           style={{ transform: 'rotate(-15deg)' }}
         />
 
