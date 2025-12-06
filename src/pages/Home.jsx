@@ -58,10 +58,10 @@ const Home = () => {
           {/* Hero Text */}
           <div className="text-center md:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-seal-brown mb-4 md:mb-6 font-bold leading-tight tracking-wide">
-              India's First Ready-to-Eat Roasted Papad
+              welcome to khichos
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-6 md:mb-8">
-              Your thali is just khali without KHiCHOS
+              your clean desi crunch
             </p>
             <p className="text-base sm:text-lg md:text-xl text-seal-brown mb-6 md:mb-8">
               No Cooking. No Waiting. Just Crunch.
