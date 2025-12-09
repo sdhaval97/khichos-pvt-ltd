@@ -1,8 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/coming-soon.html"
+      "src": "/(.*)",
+      "dest": "/coming-soon.html"
     }
   ]
 }
