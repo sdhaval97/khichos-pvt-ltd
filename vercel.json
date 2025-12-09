@@ -1,7 +1,9 @@
 {
-  "buildCommand": "echo 'Skip build'",
-  "outputDirectory": "public",
   "routes": [
+    {
+      "src": "/fonts/(.*)",
+      "dest": "/public/fonts/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/coming-soon.html"
