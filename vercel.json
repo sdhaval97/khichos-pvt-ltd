@@ -1,12 +1,8 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/fonts/(.*)",
-      "dest": "/public/fonts/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/coming-soon.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
