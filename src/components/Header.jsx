@@ -1,8 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show header when scrolled past 80% of viewport height
+      const scrollPosition = window.scrollY;
+      const threshold = window.innerHeight * 0.8;
+      setShowHeader(scrollPosition > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -26,7 +39,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-seal-brown text-white py-3 md:py-4 sticky top-0 z-50 shadow-lg">
+    <header className={`bg-seal-brown text-white py-3 md:py-4 fixed top-0 left-0 right-0 z-50 shadow-lg transition-all duration-500 ${
+      showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+    }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

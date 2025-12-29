@@ -12,6 +12,8 @@ import partnerWithUsImage from '../assets/partner_with_us.png';
 
 const Home = () => {
   const [showDadi, setShowDadi] = useState(false);
+  const [magnifierPosition, setMagnifierPosition] = useState({ x: 0, y: 0 });
+  const [showMagnifier, setShowMagnifier] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,29 @@ const Home = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    const cursorX = e.clientX;
+    const cursorY = e.clientY;
+    setMagnifierPosition({ x, y, cursorX, cursorY });
+  };
+
+  const scrollToNextSection = () => {
+    const whySection = document.getElementById('why-khichos');
+    if (whySection) {
+      const headerOffset = 80;
+      const elementPosition = whySection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <>
@@ -45,37 +70,183 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-2 pb-4 md:pt-4 md:pb-8 relative overflow-hidden">
-        {/* Papad piece peeking from right side - Desktop only */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
+        {/* Papad piece on top-left */}
+        <img
+          src={papadPiece2}
+          alt=""
+          className="absolute left-4 top-8 sm:left-8 sm:top-12 md:left-12 md:top-16 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none opacity-70"
+          style={{ transform: 'rotate(-25deg)' }}
+        />
+
+        {/* Papad piece on bottom-right */}
         <img
           src={papadPiece1}
           alt=""
-          className="hidden md:block absolute top-8 -right-16 md:-right-20 lg:-right-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
-          style={{ transform: 'rotate(15deg)' }}
+          className="absolute right-4 bottom-8 sm:right-8 sm:bottom-12 md:right-12 md:bottom-16 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none opacity-70"
+          style={{ transform: 'rotate(20deg)' }}
         />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto relative z-10">
-          {/* Hero Text */}
-          <div className="text-center md:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-seal-brown mb-4 md:mb-6 font-bold leading-tight tracking-wide">
-              welcome to khichos
-            </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl font-christmas-sheep tracking-christmas text-seal-brown mb-6 md:mb-8">
-              your clean desi crunch
-            </p>
-            <p className="text-base sm:text-lg md:text-xl text-seal-brown mb-6 md:mb-8">
-              No Cooking. No Waiting. Just Crunch.
-            </p>
+        {/* Welcome and To in single curved container */}
+        <div className="mb-2 relative z-10">
+          <div className="bg-seal-brown text-white px-5 py-2 shadow-2xl"
+               style={{
+                 borderRadius: '50% 50% 60% 40% / 30% 30% 70% 70%'
+               }}>
+            <div className="flex flex-col items-center gap-0.5">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide">
+                welcome
+              </h1>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">
+                to
+              </h2>
+            </div>
           </div>
+        </div>
 
-          {/* Product Mockup */}
-          <div className="flex items-center justify-center overflow-hidden">
+        {/* Product Mockup with Zoom Effect */}
+        <div className="mb-1 relative z-10">
+          <div
+            className="relative inline-block cursor-crosshair"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setShowMagnifier(true)}
+            onMouseLeave={() => setShowMagnifier(false)}
+          >
             <img
               src={mockupImage}
               alt="KHiCHOS Packaging Mockup"
-              className="w-full max-w-xs md:max-w-sm h-auto object-cover drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
-              style={{ objectPosition: '50% 5%' }}
+              className="w-40 sm:w-48 md:w-56 lg:w-64 h-auto object-contain drop-shadow-2xl"
             />
+
+            {/* Magnifier Glass - follows cursor outside image */}
+            {showMagnifier && (
+              <div
+                className="fixed w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-seal-brown shadow-2xl pointer-events-none overflow-hidden"
+                style={{
+                  left: `${magnifierPosition.cursorX + 20}px`,
+                  top: `${magnifierPosition.cursorY - 220}px`,
+                  backgroundImage: `url(${mockupImage})`,
+                  backgroundSize: '350%',
+                  backgroundPosition: `${magnifierPosition.x}% ${magnifierPosition.y}%`,
+                  zIndex: 50
+                }}
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Subtitle */}
+        <div className="mb-2 relative z-10">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-seal-brown font-bold text-center px-2">
+            The Easy Clean Crunch You Actually Deserve!!!
+          </p>
+        </div>
+
+        {/* Down Arrow */}
+        <button
+          onClick={scrollToNextSection}
+          className="text-seal-brown hover:text-amber-900 transition-all transform hover:translate-y-2 animate-bounce relative z-10"
+          aria-label="Scroll to next section"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 md:h-12 md:w-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </section>
+
+      {/* Why Khichos Section */}
+      <section id="why-khichos" className="min-h-screen py-8 md:py-12 bg-marigold relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-8 text-center">
+            Why KHiCHOS?
+          </h2>
+
+          <div className="relative max-w-7xl mx-auto min-h-[800px]">
+            {/* Center Papad Bowl */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <img
+                src={papadBowlImage}
+                alt="Papad Bowl"
+                className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain drop-shadow-2xl"
+              />
+            </div>
+
+            {/* Papad 1 - It's ROASTED */}
+            <div className="absolute top-[5%] left-[10%] transform rotate-[-8deg]">
+              <div className="relative">
+                <img src={papadPiece1} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">It's ROASTED</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Not Fried</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Not Air Fried</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Papad 2 - Low Fat */}
+            <div className="absolute top-[8%] right-[8%] transform rotate-[12deg]">
+              <div className="relative">
+                <img src={papadPiece2} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Low Fat</p>
+                  <p className="text-seal-brown font-bold text-[10px] md:text-xs">0.3g per Serve</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Zero Trans Fat</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Papad 3 - Just Rice */}
+            <div className="absolute top-[35%] left-[5%] transform rotate-[15deg]">
+              <div className="relative">
+                <img src={papadPiece1} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Just Rice</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Gluten Free</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Guilt Free</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Papad 4 - Pink Salt */}
+            <div className="absolute top-[40%] right-[12%] transform rotate-[-10deg]">
+              <div className="relative">
+                <img src={papadPiece2} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Pink Salt</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">No Iodised Salt</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Papad 5 - Zero Cholesterol */}
+            <div className="absolute top-[65%] left-[15%] transform rotate-[-12deg]">
+              <div className="relative">
+                <img src={papadPiece1} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Zero</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Cholesterol</p>
+                  <p className="text-seal-brown font-bold text-[10px] md:text-xs italic">You read it right</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Papad 6 - Zero Added Sugar */}
+            <div className="absolute top-[68%] right-[10%] transform rotate-[8deg]">
+              <div className="relative">
+                <img src={papadPiece2} alt="" className="w-48 md:w-56 lg:w-64 h-auto object-contain opacity-90" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Zero Added</p>
+                  <p className="text-seal-brown font-bold text-xs md:text-sm">Sugar</p>
+                  <p className="text-seal-brown font-bold text-[10px] md:text-xs">0.3g per serve</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
