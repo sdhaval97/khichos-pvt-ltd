@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import dadiImage from '../assets/Dadi Illustration 1.png';
-import mockupImage from '../assets/Khichos Packaging Mock up 01 - edited.png';
+import packetFrontImage from '../assets/Khichos Packet Front.png';
+import packetBackImage from '../assets/Khichos Packet Back.png';
 import papadBowlImage from '../assets/papad-bowl.png';
 import papadStackImage from '../assets/papad-stack.png';
 import papadInPotImage from '../assets/papad-in-pot.png';
@@ -9,13 +10,19 @@ import papadPiece1 from '../assets/images/papad-piece-1-removebg-preview.png';
 import papadPiece2 from '../assets/images/papad-piece-2-removebg-preview.png';
 import customerSupportImage from '../assets/customer_support.png';
 import partnerWithUsImage from '../assets/partner_with_us.png';
+import patternImage1 from '../assets/pattern_image.png';
+import patternImage2 from '../assets/pattern_image_2.png';
 
 const Home = () => {
   const [showDadi, setShowDadi] = useState(false);
-  const [magnifierPosition, setMagnifierPosition] = useState({ x: 0, y: 0 });
-  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [modalMagnifierPosition, setModalMagnifierPosition] = useState({ x: 0, y: 0, cursorX: 0, cursorY: 0 });
+  const [showModalMagnifier, setShowModalMagnifier] = useState(false);
   const [showFinalDadi, setShowFinalDadi] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showZoomModal, setShowZoomModal] = useState(false);
+  const [modalFlipped, setModalFlipped] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +38,7 @@ const Home = () => {
 
         if (isInFinalSection) {
           setShowDadi(false); // Hide small Dadi
+          setShowScrollTop(true); // Show scroll to top button when Dadi is hidden
           if (!showFinalDadi) {
             setShowFinalDadi(true);
             // Show speech bubble after Dadi animation completes (1s)
@@ -39,6 +47,7 @@ const Home = () => {
         } else {
           // Show small Dadi when not in final section
           setShowDadi(scrollPosition > threshold);
+          setShowScrollTop(false); // Hide scroll to top button when Dadi is visible
           setShowFinalDadi(false);
           setShowSpeechBubble(false);
         }
@@ -51,13 +60,14 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [showFinalDadi]);
 
-  const handleMouseMove = (e) => {
+  const handleModalMouseMove = (e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
     const cursorX = e.clientX;
     const cursorY = e.clientY;
-    setMagnifierPosition({ x, y, cursorX, cursorY });
+
+    setModalMagnifierPosition({ x, y, cursorX, cursorY });
   };
 
   const scrollToNextSection = () => {
@@ -74,6 +84,13 @@ const Home = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <>
       <SEO
@@ -82,7 +99,21 @@ const Home = () => {
         keywords="ready to eat papad, roasted papad, khichos, gluten free papad, healthy papad, rice papad, no oil papad, indian snacks, ready to eat snacks, clean label snacks"
         canonicalUrl="/"
       />
-      <div className="bg-marigold min-h-screen relative" id="home">
+      <div
+        className="min-h-screen relative"
+        id="home"
+        style={{
+          backgroundColor: '#FFC107',
+          backgroundImage: `
+            radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
+            repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 69, 19, 0.01) 10px, rgba(139, 69, 19, 0.01) 20px)
+          `,
+          backgroundSize: '100% 100%',
+          backgroundAttachment: 'fixed'
+        }}
+      >
       {/* Fixed Dadi Illustration - appears on scroll, fades down when final section appears */}
       <img
         src={dadiImage}
@@ -97,22 +128,7 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden bg-marigold">
-        {/* Static rays background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0"
-               style={{
-                 background: `repeating-conic-gradient(
-                   from 0deg at 50% 50%,
-                   rgba(255, 255, 255, 0.15) 0deg,
-                   rgba(255, 255, 255, 0.08) 3deg,
-                   rgba(255, 255, 255, 0) 6deg,
-                   rgba(255, 255, 255, 0) 12deg
-                 )`
-               }}>
-          </div>
-        </div>
-
+      <section className="h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
         {/* Papad piece on top-left */}
         <img
           src={papadPiece2}
@@ -145,57 +161,91 @@ const Home = () => {
           style={{ transform: 'rotate(-20deg)' }}
         />
 
-        {/* Welcome and To in single curved container */}
+        {/* Welcome To text */}
         <div className="mb-2 relative z-10">
-          <div className="bg-seal-brown text-white px-5 py-2 shadow-2xl"
-               style={{
-                 borderRadius: '50% 50% 60% 40% / 30% 30% 70% 70%'
-               }}>
-            <div className="flex flex-col items-center gap-0.5">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide">
-                welcome
-              </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">
-                to
-              </h2>
-            </div>
-          </div>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-seal-brown">
+            welcome to
+          </h1>
         </div>
 
-        {/* Product Mockup with Zoom Effect */}
-        <div className="mb-1 relative z-10">
+        {/* Product Packet with 3D Flip and Zoom Effect */}
+        <div className="mb-2 relative z-10">
           <div
-            className="relative inline-block cursor-crosshair"
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setShowMagnifier(true)}
-            onMouseLeave={() => setShowMagnifier(false)}
+            className="relative inline-block"
+            style={{ perspective: '1000px' }}
           >
-            <img
-              src={mockupImage}
-              alt="KHiCHOS Packaging Mockup"
-              className="w-40 sm:w-48 md:w-56 lg:w-64 h-auto object-contain drop-shadow-2xl"
-            />
-
-            {/* Magnifier Glass - follows cursor outside image */}
-            {showMagnifier && (
+            {/* 3D Flip Container */}
+            <div
+              className="relative cursor-pointer"
+              style={{
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.8s',
+                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                width: 'fit-content'
+              }}
+              onClick={() => setIsFlipped(!isFlipped)}
+            >
+              {/* Front Side */}
               <div
-                className="fixed w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-seal-brown shadow-2xl pointer-events-none overflow-hidden"
                 style={{
-                  left: `${magnifierPosition.cursorX + 20}px`,
-                  top: `${magnifierPosition.cursorY - 220}px`,
-                  backgroundImage: `url(${mockupImage})`,
-                  backgroundSize: '350%',
-                  backgroundPosition: `${magnifierPosition.x}% ${magnifierPosition.y}%`,
-                  zIndex: 50
+                  backfaceVisibility: 'hidden',
+                  position: isFlipped ? 'absolute' : 'relative',
+                  width: '100%',
+                  height: '100%'
                 }}
-              />
-            )}
+              >
+                <img
+                  src={packetFrontImage}
+                  alt="KHiCHOS Packet Front"
+                  className="w-48 sm:w-56 md:w-64 lg:w-72 h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+
+              {/* Back Side */}
+              <div
+                style={{
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                  position: isFlipped ? 'relative' : 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <img
+                  src={packetBackImage}
+                  alt="KHiCHOS Packet Back"
+                  className="w-48 sm:w-56 md:w-64 lg:w-72 h-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
+
+            {/* Magnifying Glass Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowZoomModal(true);
+                setModalFlipped(isFlipped);
+              }}
+              className="absolute bottom-2 right-2 bg-seal-brown text-white p-2 rounded-full shadow-lg hover:bg-amber-900 transition-all z-20"
+              aria-label="Zoom in"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+              </svg>
+            </button>
           </div>
+
+          {/* Instruction text */}
+          <p className="text-xs md:text-sm text-seal-brown text-center mt-2 opacity-70">
+            Click to flip
+          </p>
         </div>
 
         {/* Subtitle */}
-        <div className="mb-2 relative z-10">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-seal-brown font-bold text-center px-2">
+        <div className="mb-1 relative z-10">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-seal-brown font-bold text-center px-2">
             The Easy Clean Crunch You Actually Deserve!!!
           </p>
         </div>
@@ -219,23 +269,7 @@ const Home = () => {
       </section>
 
       {/* Why Khichos Section */}
-      <section id="why-khichos" className="min-h-screen py-8 md:py-12 bg-marigold relative overflow-hidden">
-        {/* Decorative mandala patterns on corners */}
-        <div className="absolute top-0 left-0 w-64 h-64 opacity-10 pointer-events-none">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-            <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-            <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-          </svg>
-        </div>
-        <div className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-            <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-            <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-200"/>
-          </svg>
-        </div>
-
+      <section id="why-khichos" className="min-h-screen py-16 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-12 text-center">
             Why KHiCHOS?
@@ -252,170 +286,85 @@ const Home = () => {
             </div>
 
             {/* Papad 1 - Top Left - It's ROASTED */}
-            <div className="absolute top-[8%] left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece1} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">It's ROASTED</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Not Fried</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Not Air Fried</p>
+            <div className="absolute top-[5%] left-[2%] md:left-[5%] transform hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">It's ROASTED</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Not Fried</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Not Air Fried</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Papad 2 - Top Right - Low Fat */}
-            <div className="absolute top-[8%] right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece2} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Low Fat</p>
-                    <p className="text-white font-bold text-[9px] md:text-[10px] leading-tight">0.3g per Serve</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Zero Trans Fat</p>
+            <div className="absolute top-[5%] right-[2%] md:right-[5%] transform hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Low Fat</p>
+                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight">0.3g per Serve</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero Trans Fat</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Papad 3 - Middle Left - Just Rice */}
-            <div className="absolute top-[45%] left-[5%] md:left-[8%] transform -translate-y-1/2 hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece1} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Just Rice</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Gluten Free</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Guilt Free</p>
+            <div className="absolute top-[50%] left-[1%] md:left-[3%] transform -translate-y-1/2 hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Just Rice</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Gluten Free</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Guilt Free</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Papad 4 - Middle Right - Pink Salt */}
-            <div className="absolute top-[45%] right-[5%] md:right-[8%] transform -translate-y-1/2 hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece2} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Pink Salt</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">No Iodised Salt</p>
+            <div className="absolute top-[50%] right-[1%] md:right-[3%] transform -translate-y-1/2 hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Pink Salt</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">No Iodised Salt</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Papad 5 - Bottom Left - Zero Cholesterol */}
-            <div className="absolute bottom-[8%] left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece1} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Zero</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Cholesterol</p>
-                    <p className="text-white font-bold text-[9px] md:text-[10px] leading-tight italic">You read it right</p>
+            <div className="absolute bottom-[5%] left-[2%] md:left-[5%] transform hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Cholesterol</p>
+                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight italic">You read it right</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Papad 6 - Bottom Right - Zero Added Sugar */}
-            <div className="absolute bottom-[8%] right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
-              <div className="relative">
-                <svg className="absolute -inset-8 w-auto h-auto" viewBox="0 0 200 120" style={{ width: '200px', height: '120px' }}>
-                  <path d="M20,60 Q20,20 60,20 L140,20 Q180,20 180,60 Q180,100 140,100 L60,100 Q20,100 20,60 Z"
-                        fill="#654321" stroke="#D4A574" strokeWidth="3" opacity="0.9"/>
-                </svg>
-                <div className="relative z-10 flex items-center gap-3">
-                  <img src={papadPiece2} alt="" className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg" />
-                  <div className="text-center pr-4">
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Zero Added</p>
-                    <p className="text-white font-bold text-[10px] md:text-xs leading-tight">Sugar</p>
-                    <p className="text-white font-bold text-[9px] md:text-[10px] leading-tight">0.3g per serve</p>
+            <div className="absolute bottom-[5%] right-[2%] md:right-[5%] transform hover:scale-105 transition-transform">
+              <div className="relative flex items-center justify-center">
+                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <div className="absolute inset-0 flex items-center justify-center text-center">
+                  <div>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero Added</p>
+                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Sugar</p>
+                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight">0.3g per serve</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section - Quick Product Overview */}
-      <section id="about" className="py-16 md:py-24 bg-marigold relative overflow-hidden">
-        {/* Papad piece peeking from left side - Desktop only */}
-        <img
-          src={papadPiece2}
-          alt=""
-          className="hidden md:block absolute top-8 -left-16 md:-left-20 lg:-left-24 w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain pointer-events-none"
-          style={{ transform: 'rotate(-15deg)' }}
-        />
-
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-christmas-sheep tracking-christmas text-seal-brown mb-8">
-              About KHiCHOS
-            </h2>
-            <p className="text-xl md:text-2xl text-seal-brown mb-12 leading-relaxed max-w-3xl mx-auto">
-              India's first ready-to-eat roasted papad. Traditional taste, modern convenience. Made with just 5 clean ingredients, zero oil, and ready in 0 seconds.
-            </p>
-
-            {/* Quick Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="bg-marigold rounded-2xl p-6 transform hover:scale-105 transition-transform">
-                <div className="text-4xl md:text-5xl font-bold text-seal-brown mb-2">0</div>
-                <div className="text-sm md:text-base text-seal-brown font-medium">Oil</div>
-              </div>
-              <div className="bg-marigold rounded-2xl p-6 transform hover:scale-105 transition-transform">
-                <div className="text-4xl md:text-5xl font-bold text-seal-brown mb-2">0</div>
-                <div className="text-sm md:text-base text-seal-brown font-medium">Cholesterol</div>
-              </div>
-              <div className="bg-marigold rounded-2xl p-6 transform hover:scale-105 transition-transform">
-                <div className="text-4xl md:text-5xl font-bold text-seal-brown mb-2">5</div>
-                <div className="text-sm md:text-base text-seal-brown font-medium">Ingredients</div>
-              </div>
-              <div className="bg-marigold rounded-2xl p-6 transform hover:scale-105 transition-transform">
-                <div className="text-4xl md:text-5xl font-bold text-seal-brown mb-2">₹20</div>
-                <div className="text-sm md:text-base text-seal-brown font-medium">25g Pack</div>
-              </div>
-            </div>
-
-            {/* Key Benefits */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-seal-brown text-white rounded-2xl p-8">
-                <div className="text-5xl mb-4">🍚</div>
-                <h3 className="text-xl font-christmas-sheep tracking-christmas mb-3">100% Rice</h3>
-                <p className="text-sm">Naturally gluten-free. Light on stomach, heavy on nostalgia.</p>
-              </div>
-              <div className="bg-seal-brown text-white rounded-2xl p-8">
-                <div className="text-5xl mb-4">🔥</div>
-                <h3 className="text-xl font-christmas-sheep tracking-christmas mb-3">Roasted, Not Fried</h3>
-                <p className="text-sm">Zero oil. Pure roasted goodness. Just 0.3g fat per serve.</p>
-              </div>
-              <div className="bg-seal-brown text-white rounded-2xl p-8">
-                <div className="text-5xl mb-4">⚡</div>
-                <h3 className="text-xl font-christmas-sheep tracking-christmas mb-3">Ready to Eat</h3>
-                <p className="text-sm">No cooking. No waiting. Open the pack and crunch.</p>
               </div>
             </div>
           </div>
@@ -423,117 +372,126 @@ const Home = () => {
       </section>
 
       {/* Story Section - Full Narrative */}
-      <section id="story" className="py-16 md:py-24 relative">
+      <section id="story" className="min-h-screen py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto relative">
-            {/* Section 1: The Nostalgia Hook */}
-            <div className="mb-16 md:mb-24 relative" style={{ zIndex: 10 }}>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-8 md:mb-12 leading-tight text-center">
-                Your Thali is Just Khali Without It.
-              </h2>
+          <div className="max-w-6xl mx-auto relative space-y-12 md:space-y-16">
 
-              <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative">
-                {/* Product Image - LEFT */}
-                <div className="flex justify-center md:justify-end">
-                  <img
-                    src={papadBowlImage}
-                    alt="KHiCHOS Papad Bowl"
-                    className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain transform hover:scale-105 transition-transform duration-300"
-                    style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
-                  />
-                </div>
+            {/* Section Header */}
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown text-center mb-8">
+              Our Story
+            </h2>
 
-                {/* Text Content - RIGHT */}
-                <div className="space-y-4 md:space-y-6">
-                  <p className="text-lg sm:text-xl md:text-2xl text-seal-brown leading-relaxed">
-                    There was always the humble Khichiya papad—our asli desi crunch. It was the sidekick to every meal, loved across homes. But then came the hustle.
-                  </p>
-                  <p className="text-lg sm:text-xl md:text-2xl text-seal-brown leading-relaxed">
-                    Morning rush, traffic jams, unread emails, and chasing deadlines. Who had the time to stand over a stove and roast a papad?
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Section 2: The Problem - LEFT ALIGNED */}
-            <div className="mb-16 md:mb-24 relative" style={{ zIndex: 10 }}>
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="lg:ml-8">
-                  <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 relative overflow-hidden">
-                    {/* Papad in Pot - Mobile only, bottom right corner */}
-                    <div className="lg:hidden absolute right-2 bottom-2 opacity-20">
-                      <img
-                        src={papadInPotImage}
-                        alt="Papad in Pot"
-                        className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain"
-                      />
-                    </div>
-
-                    <div className="relative z-10">
-                      <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-white mb-6">
-                        We Traded Legacy for Convenience.
-                      </h3>
-                      <div className="space-y-4 md:space-y-6">
-                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                          Slowly, we gave in. The "easy, greasy" fried snacks took over. Aloo and Maida crept into our diets because they were convenient. Our legacy got lost in the noise of "instant" everything.
-                        </p>
-                        <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                          We realized that while popcorn moved from the cooker to the microwave to the ready-to-eat bag, the papad was left behind in the kitchen. It was time for an evolution.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Papad Stack Image - RIGHT */}
-                <div className="hidden lg:flex justify-center items-center">
-                  <img
-                    src={papadStackImage}
-                    alt="KHiCHOS Papad Stack"
-                    className="w-80 h-80 lg:w-[28rem] lg:h-[28rem] object-contain opacity-90 transform hover:scale-105 transition-transform duration-300"
-                    style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Section 3: The Solution - RIGHT ALIGNED */}
-            <div className="mb-16 md:mb-24 relative" style={{ zIndex: 10 }}>
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                {/* Papad in Pot Image - LEFT */}
-                <div className="hidden lg:flex justify-center items-center">
-                  <img
-                    src={papadInPotImage}
-                    alt="KHiCHOS Papad in Pot"
-                    className="w-80 h-80 lg:w-[28rem] lg:h-[28rem] object-contain opacity-90 transform hover:scale-105 transition-transform duration-300"
-                    style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
-                  />
-                </div>
-
-                <div className="lg:mr-8">
-                  <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-white mb-6">
-                      For the Hustlers, The Nurturers, and Everyone In Between.
-                    </h3>
-                    <div className="space-y-4 md:space-y-6">
-                      <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                        Khichos brings it all back. No cooking. No waiting. Just open the pack and crunch.
-                      </p>
-                      <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
-                        We kept the ingredients rooted in tradition—Rice, Jeera, and Pink Salt—but modernized the format for your fast-paced life. It's the easy, clean crunch you actually deserve.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Closing Quote - CENTER */}
-            <div className="text-center max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
+            {/* Section 1: The Beginning */}
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-christmas-sheep tracking-christmas text-white leading-tight">
-                  "Light on Fat. Heavy on Nostalgia."
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-6">
+                  There always was this humble khichiya papad, loved across homes, part of every meal, our asli desi crunch.
                 </p>
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed font-bold mb-4">
+                  But then came the hustle:
+                </p>
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
+                  Morning rush, traffic jams, meetings, unread emails,<br />
+                  School-bus runs, house chores, chasing kids, homework wars,
+                </p>
+              </div>
+              <div className="flex justify-center items-center">
+                <img
+                  src={papadBowlImage}
+                  alt="KHiCHOS Papad Bowl"
+                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain transform hover:scale-105 transition-transform duration-300"
+                  style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
+                />
+              </div>
+            </div>
+
+            {/* Section 2: The Problem */}
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div className="hidden lg:flex justify-center items-center order-1">
+                <img
+                  src={papadStackImage}
+                  alt="KHiCHOS Papad Stack"
+                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain opacity-90 transform hover:scale-105 transition-transform duration-300"
+                  style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
+                />
+              </div>
+              <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 order-2">
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed font-bold mb-6">
+                  Deadlines at work, chaos at home, who had the time to wait?
+                </p>
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed mb-4">
+                  So fried took over, aloo maida crept in,<br />
+                  We gave in to the easy greasy "I-don't-care4u" fried snacks,
+                </p>
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed">
+                  And slowly, our legacy got lost.
+                </p>
+              </div>
+            </div>
+
+            {/* Section 3: The Solution */}
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
+                <p className="text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed font-bold mb-6">
+                  But not anymore!!!
+                </p>
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-6">
+                  <span className="font-christmas-sheep tracking-christmas text-2xl md:text-3xl">KHiCHOS</span> brings it all back —
+                </p>
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed">
+                  No cooking. No waiting.<br />
+                  Just open the pack and crunch — anytime, anywhere.
+                </p>
+              </div>
+              <div className="flex justify-center items-center">
+                <img
+                  src={papadInPotImage}
+                  alt="KHiCHOS Papad in Pot"
+                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain opacity-90 transform hover:scale-105 transition-transform duration-300"
+                  style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
+                />
+              </div>
+            </div>
+
+            {/* Section 4: The Ingredients */}
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div className="hidden lg:flex justify-center items-center order-1">
+                <img
+                  src={papadBowlImage}
+                  alt="Clean Ingredients"
+                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain transform hover:scale-105 transition-transform duration-300"
+                  style={{ filter: 'drop-shadow(8px 8px 12px rgba(101, 67, 33, 0.4))' }}
+                />
+              </div>
+              <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 order-2">
+                <p className="text-base md:text-lg lg:text-xl text-white leading-relaxed mb-4">
+                  Made with rice, jeera, papad khar, pink salt & green chillies.
+                </p>
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed font-bold">
+                  Clean Ingredients, rooted in tradition.
+                </p>
+              </div>
+            </div>
+
+            {/* Section 5: The Promise */}
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-2xl md:rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12">
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-christmas-sheep tracking-christmas text-white leading-tight mb-6">
+                  "Light on fat (just 0.3 g per serve),<br />
+                  Heavy on Nostalgia."
+                </p>
+                <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-8">
+                  For the hustlers, the nurturers, and everyone in between,
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <p className="text-xl md:text-2xl lg:text-3xl font-christmas-sheep tracking-christmas text-white">
+                    KHiCHOS
+                  </p>
+                  <span className="text-lg md:text-xl text-white">—</span>
+                  <p className="text-base md:text-lg lg:text-xl text-white italic">
+                    the easy clean crunch you actually deserve.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -541,7 +499,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-marigold relative">
+      <section id="contact" className="min-h-screen py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
@@ -561,9 +519,8 @@ const Home = () => {
                   <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
                     Customer Support
                   </h3>
-                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic">
-                    We are incomplete without you,<br />
-                    Would love to hear from you.
+                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
+                    We would love to hear from you
                   </p>
                   <div className="pt-6">
                     <p className="text-xl text-seal-brown font-medium mb-6">
@@ -571,13 +528,17 @@ const Home = () => {
                     </p>
                     <div className="space-y-4 max-w-sm">
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <span className="text-3xl">📞</span>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
                         <a href="tel:18008900370" className="text-xl hover:text-marigold transition-colors">
                           1800 8900 370
                         </a>
                       </div>
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <span className="text-3xl">📧</span>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                         <a href="mailto:customercare@khichos.com" className="text-base md:text-xl hover:text-marigold transition-colors">
                           customercare@khichos.com
                         </a>
@@ -607,8 +568,8 @@ const Home = () => {
                   <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
                     Business
                   </h3>
-                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic">
-                    Welcome, Let's Grow Together!!!
+                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
+                    Let's grow together
                   </p>
                   <div className="pt-6">
                     <p className="text-lg md:text-xl text-seal-brown font-medium mb-4">
@@ -619,13 +580,17 @@ const Home = () => {
                     </p>
                     <div className="space-y-4 max-w-sm">
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <span className="text-3xl">📞</span>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
                         <a href="tel:9004514169" className="text-xl hover:text-marigold transition-colors">
                           90045 14169
                         </a>
                       </div>
                       <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <span className="text-3xl">📧</span>
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                         <a href="mailto:jay@khichos.com" className="text-xl hover:text-marigold transition-colors">
                           jay@khichos.com
                         </a>
@@ -655,9 +620,6 @@ const Home = () => {
                   <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
                     Where are we located
                   </h3>
-                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic">
-                    Looking for a place in your heart
-                  </p>
                   <div className="pt-6">
                     <p className="text-lg md:text-xl text-seal-brown font-medium mb-2">
                       Khichos Foods (OPC) Private Limited
@@ -671,15 +633,19 @@ const Home = () => {
                       href="https://www.google.com/maps/place/Alpine+Industrial+Estate/@19.118926,72.8839311,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c81069819ce3:0xa2d5eb01f9601abf!8m2!3d19.118926!4d72.886506!16s%2Fg%2F11cm44g88f"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-6 bg-seal-brown text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                      className="inline-flex items-center gap-2 mt-6 bg-seal-brown text-white px-8 py-4 rounded-2xl text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
                     >
-                      📍 Open in Google Maps
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Open in Google Maps
                     </a>
                   </div>
                 </div>
 
                 {/* Right: Google Maps */}
-                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-seal-brown">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.743022637546!2d72.88393113169653!3d19.118926259244667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c81069819ce3%3A0xa2d5eb01f9601abf!2sAlpine%20Industrial%20Estate!5e0!3m2!1sen!2sin!4v1764596486172!5m2!1sen!2sin"
                     width="100%"
@@ -698,34 +664,34 @@ const Home = () => {
       </section>
 
       {/* Disclaimers Section */}
-      <section id="disclaimer" className="py-16 md:py-24 bg-seal-brown relative">
+      <section id="disclaimer" className="min-h-screen py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-white mb-4">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
               Disclaimers
             </h2>
-            <p className="text-xl md:text-2xl text-marigold">
+            <p className="text-xl md:text-2xl text-seal-brown">
               Stay Informed, Stay Safe
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto space-y-12">
             {/* Copyright */}
-            <div id="disclaimer-copyright" className="bg-marigold rounded-3xl shadow-2xl p-8 md:p-12 scroll-mt-24">
-              <h3 className="text-3xl md:text-4xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+            <div id="disclaimer-copyright" className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-3xl shadow-2xl p-8 md:p-12 scroll-mt-24">
+              <h3 className="text-3xl md:text-4xl font-christmas-sheep tracking-christmas text-white mb-6">
                 Copyright
               </h3>
-              <p className="text-base md:text-lg text-seal-brown leading-relaxed">
+              <p className="text-base md:text-lg text-white leading-relaxed">
                 All content included in or made available through any of the availed service, such as text, graphics, logos, button icons, images, audio clips and data compilations is the property of Khichos Foods (OPC) Private Limited and shall be protected and governed by laws of the land in India. All unwarranted copies of content are strictly prohibited and illegal.
               </p>
             </div>
 
             {/* Scam Alert */}
-            <div id="disclaimer-scam" className="bg-marigold rounded-3xl shadow-2xl p-8 md:p-12 scroll-mt-24 border-4 border-seal-brown">
-              <h3 className="text-3xl md:text-4xl font-christmas-sheep tracking-christmas text-seal-brown mb-6">
+            <div id="disclaimer-scam" className="bg-gradient-to-r from-seal-brown to-amber-900 rounded-3xl shadow-2xl p-8 md:p-12 scroll-mt-24">
+              <h3 className="text-3xl md:text-4xl font-christmas-sheep tracking-christmas text-white mb-6">
                 Scam Alert
               </h3>
-              <div className="space-y-4 text-base md:text-lg text-seal-brown leading-relaxed">
+              <div className="space-y-4 text-base md:text-lg text-white leading-relaxed">
                 <p className="font-bold text-xl">
                   www.khichos.com is our official website.
                 </p>
@@ -756,7 +722,7 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section with Large Dadi and Speech Bubble */}
-      <section id="final-cta" className="bg-marigold relative flex items-center justify-center py-8 md:py-12">
+      <section id="final-cta" className="h-screen relative flex items-center justify-center py-8 md:py-12 pt-24 md:pt-32">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center">
             {/* Large Dadi emerges in center */}
@@ -765,7 +731,7 @@ const Home = () => {
               <img
                 src={dadiImage}
                 alt="Dadi"
-                className={`w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain drop-shadow-2xl transition-all duration-1000 ${
+                className={`w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain drop-shadow-2xl transition-all duration-1000 ${
                   showFinalDadi ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'
                 }`}
               />
@@ -787,6 +753,141 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-seal-brown text-white p-3 rounded-full shadow-2xl hover:bg-amber-900 transition-all transform hover:scale-110 z-50"
+          aria-label="Scroll to top"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      )}
+
+      {/* Zoom Modal */}
+      {showZoomModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] p-4"
+          onClick={() => setShowZoomModal(false)}
+        >
+          <div
+            className="relative rounded-2xl p-6 md:p-8 max-w-4xl w-full overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: '#FFC107',
+              backgroundImage: `
+                radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 69, 19, 0.01) 10px, rgba(139, 69, 19, 0.01) 20px)
+              `
+            }}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowZoomModal(false)}
+              className="absolute top-4 right-4 bg-seal-brown text-white p-2 rounded-full hover:bg-amber-900 transition-all z-10"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Rotate Button */}
+            <button
+              onClick={() => setModalFlipped(!modalFlipped)}
+              className="absolute top-4 left-4 bg-seal-brown text-white px-4 py-2 rounded-full hover:bg-amber-900 transition-all z-10 flex items-center gap-2"
+              aria-label="Rotate"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span className="text-sm font-medium">Rotate</span>
+            </button>
+
+            {/* Zoomed Image with 3D Flip */}
+            <div className="flex items-center justify-center mt-16 mb-8" style={{ perspective: '1500px' }}>
+              <div
+                className="relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.8s',
+                  transform: modalFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                }}
+                onMouseMove={handleModalMouseMove}
+                onMouseEnter={() => setShowModalMagnifier(true)}
+                onMouseLeave={() => setShowModalMagnifier(false)}
+              >
+                {/* Front Side */}
+                <div
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    position: modalFlipped ? 'absolute' : 'relative',
+                  }}
+                >
+                  <img
+                    src={packetFrontImage}
+                    alt="KHiCHOS Packet Front - Zoomed"
+                    className="max-w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl"
+                  />
+                </div>
+
+                {/* Back Side */}
+                <div
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    position: modalFlipped ? 'relative' : 'absolute',
+                    top: 0,
+                    left: 0,
+                  }}
+                >
+                  <img
+                    src={packetBackImage}
+                    alt="KHiCHOS Packet Back - Zoomed"
+                    className="max-w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl"
+                  />
+                </div>
+              </div>
+
+              {/* Magnifier Glass - replaces cursor */}
+              {showModalMagnifier && (
+                <>
+                  <div
+                    className="fixed rounded-full border-4 border-seal-brown shadow-2xl pointer-events-none overflow-hidden bg-white"
+                    style={{
+                      width: '300px',
+                      height: '300px',
+                      left: modalMagnifierPosition.cursorX - 150,
+                      top: modalMagnifierPosition.cursorY - 150,
+                      backgroundImage: `url(${modalFlipped ? packetBackImage : packetFrontImage})`,
+                      backgroundSize: '500%',
+                      backgroundPosition: `${modalMagnifierPosition.x}% ${modalMagnifierPosition.y}%`,
+                      zIndex: 150
+                    }}
+                  >
+                    {/* Center crosshair to show cursor position */}
+                    <div
+                      className="absolute bg-seal-brown rounded-full"
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        left: '146px',
+                        top: '146px',
+                        boxShadow: '0 0 0 2px white, 0 0 0 4px rgba(0,0,0,0.3)'
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       </div>
     </>

@@ -75,10 +75,10 @@ const Header = () => {
               Home
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('why-khichos')}
               className="font-made-tommy font-medium hover:text-marigold transition-colors text-sm sm:text-base"
             >
-              About
+              Why KHiCHOS?
             </button>
             <button
               onClick={() => scrollToSection('story')}
@@ -145,10 +145,10 @@ const Header = () => {
                 Home
               </button>
               <button
-                onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }}
+                onClick={() => { scrollToSection('why-khichos'); setIsMobileMenuOpen(false); }}
                 className="font-made-tommy font-medium hover:text-marigold transition-colors text-lg text-left py-3 border-b border-gray-700"
               >
-                About
+                Why KHiCHOS?
               </button>
               <button
                 onClick={() => { scrollToSection('story'); setIsMobileMenuOpen(false); }}
