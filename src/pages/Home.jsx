@@ -530,9 +530,17 @@ const Home = () => {
               <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Text Content */}
                 <div className="space-y-6">
-                  <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
-                    Customer Support
-                  </h3>
+                  <div className="flex items-center gap-4">
+                    <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
+                      Customer Support
+                    </h3>
+                    {/* Small image on mobile, hidden on desktop */}
+                    <img
+                      src={customerSupportImage}
+                      alt="Customer Support"
+                      className="w-16 h-16 md:hidden object-contain"
+                    />
+                  </div>
                   <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
                     We would love to hear from you
                   </p>
@@ -540,29 +548,25 @@ const Home = () => {
                     <p className="text-xl text-seal-brown font-medium mb-6">
                       Feel free to reach out to us at below co-ordinates:
                     </p>
-                    <div className="space-y-4 max-w-sm">
-                      <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="space-y-4 max-w-sm w-full">
+                      <a href="tel:18008900370" className="flex items-center gap-4 bg-seal-brown text-white p-5 md:p-4 rounded-xl hover:bg-amber-900 transition-all cursor-pointer active:scale-95 w-full touch-manipulation">
+                        <svg className="w-6 h-6 md:w-7 md:h-7 text-white pointer-events-none flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        <a href="tel:18008900370" className="text-xl hover:text-marigold transition-colors">
-                          1800 8900 370
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="text-lg md:text-xl pointer-events-none">1800 8900 370</span>
+                      </a>
+                      <a href="mailto:customercare@khichos.com" className="flex items-center gap-4 bg-seal-brown text-white p-5 md:p-4 rounded-xl hover:bg-amber-900 transition-all cursor-pointer active:scale-95 w-full touch-manipulation">
+                        <svg className="w-6 h-6 md:w-7 md:h-7 text-white pointer-events-none flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                        <a href="mailto:customercare@khichos.com" className="text-base md:text-xl hover:text-marigold transition-colors">
-                          customercare@khichos.com
-                        </a>
-                      </div>
+                        <span className="text-base md:text-xl pointer-events-none break-all">customercare@khichos.com</span>
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Right: Image */}
-                <div className="flex items-center justify-center">
+                {/* Right: Image - only visible on desktop */}
+                <div className="hidden md:flex items-center justify-center">
                   <img
                     src={customerSupportImage}
                     alt="Customer Support"
@@ -592,23 +596,19 @@ const Home = () => {
                     <p className="text-lg text-seal-brown mb-6">
                       You may reach out directly to our Founder and MD at below co-ordinates:
                     </p>
-                    <div className="space-y-4 max-w-sm">
-                      <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="space-y-4 max-w-sm w-full">
+                      <a href="tel:9004514169" className="flex items-center gap-4 bg-seal-brown text-white p-5 md:p-4 rounded-xl hover:bg-amber-900 transition-all cursor-pointer active:scale-95 w-full touch-manipulation">
+                        <svg className="w-6 h-6 md:w-7 md:h-7 text-white pointer-events-none flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        <a href="tel:9004514169" className="text-xl hover:text-marigold transition-colors">
-                          90045 14169
-                        </a>
-                      </div>
-                      <div className="flex items-center gap-4 bg-seal-brown text-white p-4 rounded-xl">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="text-lg md:text-xl pointer-events-none">90045 14169</span>
+                      </a>
+                      <a href="mailto:jay@khichos.com" className="flex items-center gap-4 bg-seal-brown text-white p-5 md:p-4 rounded-xl hover:bg-amber-900 transition-all cursor-pointer active:scale-95 w-full touch-manipulation">
+                        <svg className="w-6 h-6 md:w-7 md:h-7 text-white pointer-events-none flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                        <a href="mailto:jay@khichos.com" className="text-xl hover:text-marigold transition-colors">
-                          jay@khichos.com
-                        </a>
-                      </div>
+                        <span className="text-lg md:text-xl pointer-events-none">jay@khichos.com</span>
+                      </a>
                     </div>
                   </div>
                 </div>
