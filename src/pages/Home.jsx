@@ -8,6 +8,10 @@ import papadStackImage from '../assets/papad-stack.png';
 import papadInPotImage from '../assets/papad-in-pot.png';
 import papadPiece1 from '../assets/images/papad-piece-1-removebg-preview.png';
 import papadPiece2 from '../assets/images/papad-piece-2-removebg-preview.png';
+import papadPiece3 from '../assets/images/papad-piece-3-removebg-preview.png';
+import papadPiece4 from '../assets/images/papad-piece-4-removebg-preview.png';
+import papadPiece5 from '../assets/images/papad-piece-5-removebg-preview.png';
+import papadPiece6 from '../assets/images/papad-piece-6.png';
 import customerSupportImage from '../assets/customer_support.png';
 import partnerWithUsImage from '../assets/partner_with_us.png';
 import patternImage1 from '../assets/pattern_image.png';
@@ -64,10 +68,8 @@ const Home = () => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
-    const cursorX = e.clientX;
-    const cursorY = e.clientY;
 
-    setModalMagnifierPosition({ x, y, cursorX, cursorY });
+    setModalMagnifierPosition({ x, y, cursorX: e.clientX, cursorY: e.clientY, imgLeft: left, imgTop: top, imgWidth: width, imgHeight: height });
   };
 
   const scrollToNextSection = () => {
@@ -131,34 +133,46 @@ const Home = () => {
       <section className="h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
         {/* Papad piece on top-left */}
         <img
-          src={papadPiece2}
+          src={papadPiece3}
           alt=""
-          className="absolute left-8 top-12 sm:left-12 sm:top-16 md:left-16 md:top-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain pointer-events-none opacity-70 z-20"
-          style={{ transform: 'rotate(-25deg)' }}
+          className="absolute left-2 top-6 sm:left-8 sm:top-12 md:left-12 md:top-16 lg:left-16 lg:top-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          style={{
+            transform: 'rotate(-25deg)',
+            filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
+          }}
         />
 
         {/* Papad piece on top-right */}
         <img
-          src={papadPiece1}
+          src={papadPiece5}
           alt=""
-          className="absolute right-8 top-12 sm:right-12 sm:top-16 md:right-16 md:top-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain pointer-events-none opacity-70 z-20"
-          style={{ transform: 'rotate(20deg)' }}
+          className="absolute right-2 top-6 sm:right-8 sm:top-12 md:right-12 md:top-16 lg:right-16 lg:top-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          style={{
+            transform: 'rotate(20deg)',
+            filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
+          }}
         />
 
         {/* Papad piece on bottom-left */}
         <img
-          src={papadPiece1}
+          src={papadPiece4}
           alt=""
-          className="absolute left-8 bottom-12 sm:left-12 sm:bottom-16 md:left-16 md:bottom-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain pointer-events-none opacity-70 z-20"
-          style={{ transform: 'rotate(15deg)' }}
+          className="absolute left-2 bottom-6 sm:left-8 sm:bottom-12 md:left-12 md:bottom-16 lg:left-16 lg:bottom-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          style={{
+            transform: 'rotate(15deg)',
+            filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
+          }}
         />
 
         {/* Papad piece on bottom-right */}
         <img
-          src={papadPiece2}
+          src={papadPiece6}
           alt=""
-          className="absolute right-8 bottom-12 sm:right-12 sm:bottom-16 md:right-16 md:bottom-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-contain pointer-events-none opacity-70 z-20"
-          style={{ transform: 'rotate(-20deg)' }}
+          className="absolute right-2 bottom-6 sm:right-8 sm:bottom-12 md:right-12 md:bottom-16 lg:right-16 lg:bottom-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          style={{
+            transform: 'rotate(-20deg)',
+            filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
+          }}
         />
 
         {/* Welcome To text */}
@@ -275,94 +289,94 @@ const Home = () => {
             Why KHiCHOS?
           </h2>
 
-          <div className="relative max-w-7xl mx-auto min-h-[600px]">
+          <div className="relative max-w-7xl mx-auto min-h-[600px] sm:min-h-[700px] md:min-h-[800px]">
             {/* Center Papad Bowl */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
               <img
-                src={papadBowlImage}
+                src={papadInPotImage}
                 alt="Papad Bowl"
-                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
+                className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
               />
             </div>
 
-            {/* Papad 1 - Top Left - It's ROASTED */}
-            <div className="absolute top-[5%] left-[2%] md:left-[5%] transform hover:scale-105 transition-transform">
+            {/* Papad 1 - Top (12 o'clock) - It's ROASTED */}
+            <div className="absolute top-[2%] left-1/2 transform -translate-x-1/2 hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece1} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(0deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">It's ROASTED</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Not Fried</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Not Air Fried</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">It's ROASTED</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Not Fried</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Not Air Fried</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Papad 2 - Top Right - Low Fat */}
-            <div className="absolute top-[5%] right-[2%] md:right-[5%] transform hover:scale-105 transition-transform">
+            {/* Papad 2 - Top Right (2 o'clock) - Just Rice */}
+            <div className="absolute top-[15%] right-[5%] sm:right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece2} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(60deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Low Fat</p>
-                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight">0.3g per Serve</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero Trans Fat</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Just Rice</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Gluten Free</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Guilt Free</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Papad 3 - Middle Left - Just Rice */}
-            <div className="absolute top-[50%] left-[1%] md:left-[3%] transform -translate-y-1/2 hover:scale-105 transition-transform">
+            {/* Papad 3 - Bottom Right (4 o'clock) - Low Fat */}
+            <div className="absolute bottom-[15%] right-[5%] sm:right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece3} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(120deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Just Rice</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Gluten Free</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Guilt Free</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Low Fat</p>
+                    <p className="text-seal-brown font-bold text-[10px] sm:text-xs md:text-sm lg:text-base leading-tight">0.3g per Serve</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Zero Trans Fat</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Papad 4 - Middle Right - Pink Salt */}
-            <div className="absolute top-[50%] right-[1%] md:right-[3%] transform -translate-y-1/2 hover:scale-105 transition-transform">
+            {/* Papad 4 - Bottom (6 o'clock) - Pink Salt */}
+            <div className="absolute bottom-[2%] left-1/2 transform -translate-x-1/2 hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece4} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(180deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Pink Salt</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">No Iodised Salt</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Pink Salt</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">No Iodised Salt</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Papad 5 - Bottom Left - Zero Cholesterol */}
-            <div className="absolute bottom-[5%] left-[2%] md:left-[5%] transform hover:scale-105 transition-transform">
+            {/* Papad 5 - Bottom Left (8 o'clock) - Zero Cholesterol */}
+            <div className="absolute bottom-[15%] left-[5%] sm:left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece1} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece5} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(240deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Cholesterol</p>
-                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight italic">You read it right</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Zero</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Cholesterol</p>
+                    <p className="text-seal-brown font-bold text-[10px] sm:text-xs md:text-sm lg:text-base leading-tight italic">You read it right</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Papad 6 - Bottom Right - Zero Added Sugar */}
-            <div className="absolute bottom-[5%] right-[2%] md:right-[5%] transform hover:scale-105 transition-transform">
+            {/* Papad 6 - Top Left (10 o'clock) - Zero Added Sugar */}
+            <div className="absolute top-[15%] left-[5%] sm:left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
-                <img src={papadPiece2} alt="" className="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 object-contain drop-shadow-2xl" />
+                <img src={papadPiece6} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(300deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Zero Added</p>
-                    <p className="text-seal-brown font-bold text-base md:text-lg lg:text-xl leading-tight">Sugar</p>
-                    <p className="text-seal-brown font-bold text-sm md:text-base lg:text-lg leading-tight">0.3g per serve</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Zero Added</p>
+                    <p className="text-seal-brown font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight">Sugar</p>
+                    <p className="text-seal-brown font-bold text-[10px] sm:text-xs md:text-sm lg:text-base leading-tight">0.3g per serve</p>
                   </div>
                 </div>
               </div>
@@ -816,11 +830,8 @@ const Home = () => {
                 style={{
                   transformStyle: 'preserve-3d',
                   transition: 'transform 0.8s',
-                  transform: modalFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                  transform: modalFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
                 }}
-                onMouseMove={handleModalMouseMove}
-                onMouseEnter={() => setShowModalMagnifier(true)}
-                onMouseLeave={() => setShowModalMagnifier(false)}
               >
                 {/* Front Side */}
                 <div
@@ -833,6 +844,9 @@ const Home = () => {
                     src={packetFrontImage}
                     alt="KHiCHOS Packet Front - Zoomed"
                     className="max-w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl"
+                    onMouseMove={handleModalMouseMove}
+                    onMouseEnter={() => setShowModalMagnifier(true)}
+                    onMouseLeave={() => setShowModalMagnifier(false)}
                   />
                 </div>
 
@@ -850,39 +864,42 @@ const Home = () => {
                     src={packetBackImage}
                     alt="KHiCHOS Packet Back - Zoomed"
                     className="max-w-full h-auto max-h-[70vh] object-contain drop-shadow-2xl"
+                    onMouseMove={handleModalMouseMove}
+                    onMouseEnter={() => setShowModalMagnifier(true)}
+                    onMouseLeave={() => setShowModalMagnifier(false)}
                   />
                 </div>
               </div>
 
-              {/* Magnifier Glass - replaces cursor */}
-              {showModalMagnifier && (
-                <>
+              {/* Magnifier Glass - positioned over the image at cursor location */}
+              {showModalMagnifier && modalMagnifierPosition.imgLeft !== undefined && (
+                <div
+                  className="fixed rounded-full border-4 border-seal-brown shadow-2xl pointer-events-none overflow-hidden"
+                  style={{
+                    width: '200px',
+                    height: '200px',
+                    left: `${modalMagnifierPosition.imgLeft + (modalMagnifierPosition.x / 100) * modalMagnifierPosition.imgWidth - 100}px`,
+                    top: `${modalMagnifierPosition.imgTop + (modalMagnifierPosition.y / 100) * modalMagnifierPosition.imgHeight - 100}px`,
+                    backgroundImage: `url(${modalFlipped ? packetBackImage : packetFrontImage})`,
+                    backgroundSize: `${modalMagnifierPosition.imgWidth * 4}px ${modalMagnifierPosition.imgHeight * 4}px`,
+                    backgroundPosition: `-${(modalMagnifierPosition.x / 100) * modalMagnifierPosition.imgWidth * 4 - 100}px -${(modalMagnifierPosition.y / 100) * modalMagnifierPosition.imgHeight * 4 - 100}px`,
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 150,
+                    backgroundColor: 'white'
+                  }}
+                >
+                  {/* Crosshair positioned at exact cursor location */}
                   <div
-                    className="fixed rounded-full border-4 border-seal-brown shadow-2xl pointer-events-none overflow-hidden bg-white"
+                    className="absolute bg-seal-brown rounded-full"
                     style={{
-                      width: '300px',
-                      height: '300px',
-                      left: modalMagnifierPosition.cursorX - 150,
-                      top: modalMagnifierPosition.cursorY - 150,
-                      backgroundImage: `url(${modalFlipped ? packetBackImage : packetFrontImage})`,
-                      backgroundSize: '500%',
-                      backgroundPosition: `${modalMagnifierPosition.x}% ${modalMagnifierPosition.y}%`,
-                      zIndex: 150
+                      width: '8px',
+                      height: '8px',
+                      left: `${modalMagnifierPosition.cursorX - (modalMagnifierPosition.imgLeft + (modalMagnifierPosition.x / 100) * modalMagnifierPosition.imgWidth - 100) - 4}px`,
+                      top: `${modalMagnifierPosition.cursorY - (modalMagnifierPosition.imgTop + (modalMagnifierPosition.y / 100) * modalMagnifierPosition.imgHeight - 100) - 4}px`,
+                      boxShadow: '0 0 0 2px white, 0 0 0 4px rgba(0,0,0,0.3)'
                     }}
-                  >
-                    {/* Center crosshair to show cursor position */}
-                    <div
-                      className="absolute bg-seal-brown rounded-full"
-                      style={{
-                        width: '8px',
-                        height: '8px',
-                        left: '146px',
-                        top: '146px',
-                        boxShadow: '0 0 0 2px white, 0 0 0 4px rgba(0,0,0,0.3)'
-                      }}
-                    />
-                  </div>
-                </>
+                  />
+                </div>
               )}
             </div>
           </div>
