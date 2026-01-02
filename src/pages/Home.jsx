@@ -530,22 +530,20 @@ const Home = () => {
               <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Text Content */}
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    {/* Image as bullet point - mobile only */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown">
+                      Customer Support
+                    </h3>
+                    {/* Small image inline - mobile only */}
                     <img
                       src={customerSupportImage}
                       alt="Customer Support"
-                      className="w-12 h-12 md:hidden object-contain flex-shrink-0 mt-2"
+                      className="w-12 h-12 md:hidden object-contain flex-shrink-0"
                     />
-                    <div>
-                      <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
-                        Customer Support
-                      </h3>
-                      <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
-                        We would love to hear from you
-                      </p>
-                    </div>
                   </div>
+                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
+                    We would love to hear from you
+                  </p>
                   <div className="pt-6">
                     <p className="text-xl text-seal-brown font-medium mb-6">
                       Feel free to reach out to us at below co-ordinates:
@@ -585,22 +583,20 @@ const Home = () => {
               <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Text Content */}
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    {/* Image as bullet point - mobile only */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown">
+                      Business
+                    </h3>
+                    {/* Small image inline - mobile only */}
                     <img
                       src={partnerWithUsImage}
                       alt="Business Partnership"
-                      className="w-12 h-12 md:hidden object-contain flex-shrink-0 mt-2"
+                      className="w-12 h-12 md:hidden object-contain flex-shrink-0"
                     />
-                    <div>
-                      <h3 className="text-4xl md:text-5xl font-christmas-sheep tracking-christmas text-seal-brown mb-4">
-                        Business
-                      </h3>
-                      <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
-                        Let's grow together
-                      </p>
-                    </div>
                   </div>
+                  <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
+                    Let's grow together
+                  </p>
                   <div className="pt-6">
                     <p className="text-lg md:text-xl text-seal-brown font-medium mb-4">
                       If you are a Distributor, Exporter, Importer or wanting to place Bulk Orders
