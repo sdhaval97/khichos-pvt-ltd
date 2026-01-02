@@ -782,7 +782,7 @@ const Home = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-seal-brown text-white p-4 md:p-5 rounded-full shadow-2xl hover:bg-amber-900 transition-all transform hover:scale-110 z-50 cursor-pointer active:scale-95"
+          className="fixed bottom-16 right-8 bg-seal-brown text-white p-4 md:p-5 rounded-full shadow-2xl hover:bg-amber-900 transition-all transform hover:scale-110 z-50 cursor-pointer active:scale-95"
           aria-label="Scroll to top"
         >
           <svg className="w-6 h-6 md:w-7 md:h-7 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
