@@ -736,11 +736,26 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section with Large Dadi and Speech Bubble */}
-      <section id="final-cta" className="h-screen relative flex items-center justify-center py-8 md:py-12 pt-24 md:pt-32">
+      <section id="final-cta" className="h-screen relative flex items-center justify-center py-8 md:py-12 pt-24 md:pt-32 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center">
             {/* Large Dadi emerges in center */}
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+              {/* Speech Bubble - appears above Dadi on mobile, to the right on desktop */}
+              <div
+                className={`bg-seal-brown text-white px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-3xl shadow-2xl transition-all duration-500 w-48 md:w-64 lg:w-80 md:absolute md:left-[calc(100%+1rem)] md:top-[15%] lg:left-[calc(100%+2rem)] lg:top-[20%] ${
+                  showSpeechBubble ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                }`}
+              >
+                <p className="text-sm md:text-xl lg:text-2xl font-christmas-sheep tracking-christmas text-center leading-relaxed">
+                  not tried yet?<br />
+                  go grab one!
+                </p>
+                {/* Triangle pointer - points down on mobile, left on desktop */}
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full w-0 h-0 border-l-[12px] border-r-[12px] border-t-[12px] border-l-transparent border-r-transparent border-t-seal-brown md:hidden"></div>
+                <div className="hidden md:block absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[12px] border-b-[12px] border-r-[12px] border-t-transparent border-b-transparent border-r-seal-brown"></div>
+              </div>
+
               {/* Large Dadi Image - emerges from bottom */}
               <img
                 src={dadiImage}
@@ -749,20 +764,6 @@ const Home = () => {
                   showFinalDadi ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'
                 }`}
               />
-
-              {/* Speech Bubble - appears to the right of Dadi's face */}
-              <div
-                className={`absolute left-[calc(100%+1rem)] top-[15%] md:left-[calc(100%+2rem)] md:top-[20%] bg-seal-brown text-white px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-3xl shadow-2xl transition-all duration-500 w-48 md:w-64 lg:w-80 ${
-                  showSpeechBubble ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-                }`}
-              >
-                <p className="text-sm md:text-xl lg:text-2xl font-christmas-sheep tracking-christmas text-center leading-relaxed">
-                  not tried yet?<br />
-                  go grab one!
-                </p>
-                {/* Triangle pointer - points left to Dadi's face */}
-                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-[12px] border-b-[12px] border-r-[12px] border-t-transparent border-b-transparent border-r-seal-brown"></div>
-              </div>
             </div>
           </div>
         </div>
