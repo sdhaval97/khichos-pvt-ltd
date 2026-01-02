@@ -242,10 +242,10 @@ const Home = () => {
                 setShowZoomModal(true);
                 setModalFlipped(isFlipped);
               }}
-              className="absolute bottom-2 right-2 bg-seal-brown text-white p-2 rounded-full shadow-lg hover:bg-amber-900 transition-all z-20"
+              className="absolute bottom-2 right-2 bg-seal-brown text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-amber-900 transition-all z-20 cursor-pointer active:scale-95"
               aria-label="Zoom in"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
               </svg>
             </button>
@@ -267,12 +267,12 @@ const Home = () => {
         {/* Down Arrow */}
         <button
           onClick={scrollToNextSection}
-          className="text-seal-brown hover:text-amber-900 transition-all transform hover:translate-y-2 animate-bounce relative z-10"
+          className="text-seal-brown hover:text-amber-900 transition-all transform hover:translate-y-2 animate-bounce relative z-10 p-2 cursor-pointer active:scale-95"
           aria-label="Scroll to next section"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 md:h-12 md:w-12"
+            className="h-10 w-10 md:h-12 md:w-12 pointer-events-none"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -773,10 +773,10 @@ const Home = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-seal-brown text-white p-3 rounded-full shadow-2xl hover:bg-amber-900 transition-all transform hover:scale-110 z-50"
+          className="fixed bottom-8 right-8 bg-seal-brown text-white p-4 md:p-5 rounded-full shadow-2xl hover:bg-amber-900 transition-all transform hover:scale-110 z-50 cursor-pointer active:scale-95"
           aria-label="Scroll to top"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 md:w-7 md:h-7 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
         </button>
@@ -804,10 +804,10 @@ const Home = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowZoomModal(false)}
-              className="absolute top-4 right-4 bg-seal-brown text-white p-2 rounded-full hover:bg-amber-900 transition-all z-10"
+              className="absolute top-4 right-4 bg-seal-brown text-white p-3 md:p-4 rounded-full hover:bg-amber-900 transition-all z-10 cursor-pointer active:scale-95"
               aria-label="Close"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 md:w-7 md:h-7 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -815,13 +815,13 @@ const Home = () => {
             {/* Rotate Button */}
             <button
               onClick={() => setModalFlipped(!modalFlipped)}
-              className="absolute top-4 left-4 bg-seal-brown text-white px-4 py-2 rounded-full hover:bg-amber-900 transition-all z-10 flex items-center gap-2"
+              className="absolute top-4 left-4 bg-seal-brown text-white px-5 py-3 md:px-6 md:py-4 rounded-full hover:bg-amber-900 transition-all z-10 flex items-center gap-2 cursor-pointer active:scale-95"
               aria-label="Rotate"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              <span className="text-sm font-medium">Rotate</span>
+              <span className="text-sm md:text-base font-medium pointer-events-none">Rotate</span>
             </button>
 
             {/* Zoomed Image with 3D Flip */}
