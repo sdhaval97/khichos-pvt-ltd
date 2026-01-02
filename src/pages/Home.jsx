@@ -314,7 +314,7 @@ const Home = () => {
             </div>
 
             {/* Papad 2 - Top Right (2 o'clock) - Just Rice */}
-            <div className="absolute top-[15%] right-[5%] sm:right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
+            <div className="absolute top-[12%] right-[2%] sm:right-[5%] md:right-[8%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
                 <img src={papadPiece2} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(60deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
@@ -328,7 +328,7 @@ const Home = () => {
             </div>
 
             {/* Papad 3 - Bottom Right (4 o'clock) - Low Fat */}
-            <div className="absolute bottom-[15%] right-[5%] sm:right-[8%] md:right-[12%] transform hover:scale-105 transition-transform">
+            <div className="absolute bottom-[12%] right-[2%] sm:right-[5%] md:right-[8%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
                 <img src={papadPiece3} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(120deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
@@ -355,7 +355,7 @@ const Home = () => {
             </div>
 
             {/* Papad 5 - Bottom Left (8 o'clock) - Zero Cholesterol */}
-            <div className="absolute bottom-[15%] left-[5%] sm:left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
+            <div className="absolute bottom-[12%] left-[2%] sm:left-[5%] md:left-[8%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
                 <img src={papadPiece5} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(240deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
@@ -369,7 +369,7 @@ const Home = () => {
             </div>
 
             {/* Papad 6 - Top Left (10 o'clock) - Zero Added Sugar */}
-            <div className="absolute top-[15%] left-[5%] sm:left-[8%] md:left-[12%] transform hover:scale-105 transition-transform">
+            <div className="absolute top-[12%] left-[2%] sm:left-[5%] md:left-[8%] transform hover:scale-105 transition-transform">
               <div className="relative flex items-center justify-center">
                 <img src={papadPiece6} alt="" className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain drop-shadow-2xl" style={{ transform: 'rotate(300deg)' }} />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
