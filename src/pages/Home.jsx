@@ -135,7 +135,7 @@ const Home = () => {
         <img
           src={papadPiece3}
           alt=""
-          className="absolute left-2 top-6 sm:left-8 sm:top-12 md:left-12 md:top-16 lg:left-16 lg:top-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          className="absolute left-2 top-8 sm:left-8 sm:top-12 md:left-12 md:top-16 lg:left-16 lg:top-20 w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
           style={{
             transform: 'rotate(-25deg)',
             filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
@@ -146,7 +146,7 @@ const Home = () => {
         <img
           src={papadPiece5}
           alt=""
-          className="absolute right-2 top-6 sm:right-8 sm:top-12 md:right-12 md:top-16 lg:right-16 lg:top-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          className="absolute right-2 top-8 sm:right-8 sm:top-12 md:right-12 md:top-16 lg:right-16 lg:top-20 w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
           style={{
             transform: 'rotate(20deg)',
             filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
@@ -157,7 +157,7 @@ const Home = () => {
         <img
           src={papadPiece4}
           alt=""
-          className="absolute left-2 bottom-6 sm:left-8 sm:bottom-12 md:left-12 md:bottom-16 lg:left-16 lg:bottom-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          className="absolute left-2 bottom-16 sm:left-8 sm:bottom-12 md:left-12 md:bottom-16 lg:left-16 lg:bottom-20 w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
           style={{
             transform: 'rotate(15deg)',
             filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
@@ -168,7 +168,7 @@ const Home = () => {
         <img
           src={papadPiece6}
           alt=""
-          className="absolute right-2 bottom-6 sm:right-8 sm:bottom-12 md:right-12 md:bottom-16 lg:right-16 lg:bottom-20 w-28 h-28 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
+          className="absolute right-2 bottom-16 sm:right-8 sm:bottom-12 md:right-12 md:bottom-16 lg:right-16 lg:bottom-20 w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 object-contain pointer-events-none z-20"
           style={{
             transform: 'rotate(-20deg)',
             filter: 'drop-shadow(4px 4px 8px rgba(101, 67, 33, 0.5))'
