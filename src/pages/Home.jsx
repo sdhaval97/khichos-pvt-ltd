@@ -538,7 +538,7 @@ const Home = () => {
                     <img
                       src={customerSupportImage}
                       alt="Customer Support"
-                      className="w-12 h-12 md:hidden object-contain flex-shrink-0"
+                      className="w-16 h-16 md:hidden object-contain flex-shrink-0"
                     />
                   </div>
                   <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
@@ -591,7 +591,7 @@ const Home = () => {
                     <img
                       src={partnerWithUsImage}
                       alt="Business Partnership"
-                      className="w-12 h-12 md:hidden object-contain flex-shrink-0"
+                      className="w-16 h-16 md:hidden object-contain flex-shrink-0"
                     />
                   </div>
                   <p className="text-2xl md:text-3xl text-seal-brown leading-relaxed italic mb-6">
