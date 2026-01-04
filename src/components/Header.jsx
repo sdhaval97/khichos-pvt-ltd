@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logoWhite from '/logo-white.png';
 
 const Header = () => {
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
@@ -48,7 +49,7 @@ const Header = () => {
           <div className="flex items-center">
             <button onClick={scrollToTop} className="cursor-pointer">
               <img
-                src="/logo-white.png"
+                src={logoWhite}
                 alt="KHiCHOS"
                 className="h-10 sm:h-12 md:h-14 lg:h-16"
               />
